@@ -21,4 +21,10 @@ public partial class FormMain : FormBase
     {
         Application.Exit();
     }
+
+    private void button1_Click(object sender, EventArgs e)
+    {
+        Hide();
+        FormFactory.Get<FormCreateOrder>().Show();
+    }
 }
