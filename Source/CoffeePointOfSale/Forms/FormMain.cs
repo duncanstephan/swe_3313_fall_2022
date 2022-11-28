@@ -22,7 +22,26 @@ public partial class FormMain : FormBase
         Application.Exit();
     }
 
-    private void btncustomerlist_Click(object sender, EventArgs e)
+    //<<<<<<< HEAD
+    private void btnAnonOrder(object sender, EventArgs e)
+    {
+        Hide();
+        //FormFactory.Get<FormPayment>().Show();
+        //=======
+    }
+    private void CreateOrder_Click(object sender, EventArgs e)
+    {
+        Hide();
+        FormFactory.Get<FormCreateOrder>().Show();
+    }
+
+    private void FormMain_Load(object sender, EventArgs e)
+    {
+
+//>>>>>>> main
+    }
+
+    private void CustomerList_Click(object sender, EventArgs e)
     {
         Hide();
         FormFactory.Get<FormCustomerList>().Show();
