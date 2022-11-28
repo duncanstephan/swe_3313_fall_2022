@@ -294,6 +294,17 @@ namespace CoffeePointOfSale.Forms.Base
         {
 
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Hide();
+            FormFactory.Get<FormMain>().Show();
+        }
     }
 
 
