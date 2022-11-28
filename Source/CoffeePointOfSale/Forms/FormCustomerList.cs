@@ -33,16 +33,27 @@ namespace CoffeePointOfSale.Forms
 
         private void FormCustomerList_Load()
         {
-
+            
             PopulateDataGridView();
         }
 
         private void PopulateDataGridView()
         {
+            string c0 = "";
+            string c1 = "";
+            string c2 = "";
+
             for (int i = 0; i < _customerService.Customers.List.Count; i++)
             {
                 Customer customer = _customerService.Customers.List[i];
-                dataGridView1.Rows.Add(customer);
+
+                c0 = customer.Phone;
+                c1 = customer.First;
+                c2 = customer.Last;
+
+                string[] row = new string[] {c0, c1, c2, "Order"};
+
+                dataGridView1.Rows.Add(row);
             }
         }
 
