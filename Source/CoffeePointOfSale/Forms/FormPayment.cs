@@ -20,6 +20,7 @@ using Newtonsoft.Json.Linq;
 using System.Diagnostics;
 using CoffeePointOfSale.Services.SalesHistory;
 using System.Text.Json;
+using CreditCardValidator;
 
 namespace CoffeePointOfSale.Forms
 {
@@ -57,6 +58,14 @@ namespace CoffeePointOfSale.Forms
             Hide();
             FormFactory.Get<FormReceipt>().Show();
             //validate credit card
+            CreditCardDetector detector = new CreditCardDetector(textBoxCardNum.Text);
+            bool Valid = detector.IsValid();
+            if (Valid == false)
+            {
+                textBoxCardNum.ForeColor = Color.Red;
+                textBoxCardNum.Text = "Card not valid";
+            }
+
             if (!anonymous)
             {
                 updatePoints();
