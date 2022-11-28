@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
@@ -39,15 +41,13 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.Cl6 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.tax = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -87,9 +87,31 @@
             this.splitContainer1.Panel2.Controls.Add(this.button1);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Size = new System.Drawing.Size(1364, 760);
-            this.splitContainer1.SplitterDistance = 679;
+            this.splitContainer1.SplitterDistance = 678;
             this.splitContainer1.TabIndex = 2;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Location = new System.Drawing.Point(-10, -7);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1371, 71);
+            this.panel1.TabIndex = 17;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Black;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(453, 11);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(203, 45);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Create Order";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
@@ -185,7 +207,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(211)))), ((int)(((byte)(83)))));
-            this.button2.Location = new System.Drawing.Point(175, 621);
+            this.button2.Location = new System.Drawing.Point(182, 556);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(168, 38);
             this.button2.TabIndex = 1;
@@ -203,6 +225,14 @@
             this.comboBox1.TabIndex = 0;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.Black;
+            this.panel2.Location = new System.Drawing.Point(-14, -10);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(695, 74);
+            this.panel2.TabIndex = 20;
+            // 
             // Cl6
             // 
             this.Cl6.AutoSize = true;
@@ -215,7 +245,7 @@
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(95)))), ((int)(((byte)(98)))));
-            this.button4.Location = new System.Drawing.Point(528, 627);
+            this.button4.Location = new System.Drawing.Point(525, 568);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(94, 26);
             this.button4.TabIndex = 18;
@@ -257,7 +287,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(211)))), ((int)(((byte)(83)))));
-            this.button1.Location = new System.Drawing.Point(234, 602);
+            this.button1.Location = new System.Drawing.Point(234, 556);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(168, 38);
             this.button1.TabIndex = 0;
@@ -265,42 +295,12 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Black;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(483, 14);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(203, 45);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Create Order";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.Black;
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Location = new System.Drawing.Point(-10, -7);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1371, 71);
-            this.panel1.TabIndex = 17;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Black;
-            this.panel2.Location = new System.Drawing.Point(-14, -10);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(695, 74);
-            this.panel2.TabIndex = 20;
-            // 
             // FormCreateOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(151)))), ((int)(((byte)(126)))));
-            this.ClientSize = new System.Drawing.Size(1364, 760);
+            this.ClientSize = new System.Drawing.Size(1348, 634);
             this.Controls.Add(this.splitContainer1);
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "FormCreateOrder";
