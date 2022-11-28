@@ -11,22 +11,22 @@ namespace CoffeePointOfSale.Forms
             InitializeComponent();
         }
 
-        public void OnClickCreateOrder(object sender, EventArgs e)
+        private void btnCreateOrder_Click(object sender, EventArgs e)
         {
             Hide();
             FormFactory.Get<FormCreateOrder>().Show();
         }
 
-        public void OnClickBtnManagement(object sender, EventArgs e)
-        {
-            Hide();
-            FormFactory.Get<FormManagement>().Show();
-        }
-
-        public void OnClickBtnCustomerList(object sender, EventArgs e)
+        private void btnCustomerList_Click(object sender, EventArgs e)
         {
             Hide();
             FormFactory.Get<FormCustomerList>().Show();
+        }
+
+        private void btnManagement_Click(object sender, EventArgs e)
+        {
+            Hide();
+            FormFactory.Get<FormManagement>().Show();
         }
     }
 }
