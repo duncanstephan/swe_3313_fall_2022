@@ -238,6 +238,17 @@ namespace CoffeePointOfSale.Forms.Base
 
 
             var drinkList = _drinkMenuService.DrinkMenu.Drinks;
+            if (subtotal == 0)
+            {
+                for (int i = 0; i < drinkList.Count; i++)
+                {
+                    if (drinkList[i].Name == comboBox1.Text)
+                    {
+                        subtotal = drinkList[i].BasePrice;
+                    }
+                }
+
+            }
 
             for (int i = 0; i < drinkList.Count; i++)
             {
@@ -250,14 +261,14 @@ namespace CoffeePointOfSale.Forms.Base
                         {
                             int quantity = int.Parse(comboBox3.Text);
                             Cl1.Text = Cl1.Text + Environment.NewLine + comboBox3.Text + "x" + comboBox2.Text + (drinkList[i].Customizations[j].Price*quantity);
-                            subtotal =  (drinkList[i].Customizations[j].Price * quantity);
+                            subtotal =  subtotal + (drinkList[i].Customizations[j].Price * quantity);
                         }
 
                     }
-                    subtotal = subtotal + drinkList[i].BasePrice;
+                    
                 }
             }
-            
+            label6.Text = "Drink Subtotal: " + subtotal.ToString();
            
         }
 
