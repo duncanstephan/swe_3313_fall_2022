@@ -33,7 +33,7 @@ sealed partial class FormMain
             this.CustomerList = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAnonOrder = new System.Windows.Forms.Button();
+           // this.btnAnonOrder = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -97,12 +97,12 @@ sealed partial class FormMain
             // 
             // btnAnonOrder
             // 
-            this.btnAnonOrder.Location = new System.Drawing.Point(337, 125);
-            this.btnAnonOrder.Name = "btnAnonOrder";
-            this.btnAnonOrder.Size = new System.Drawing.Size(674, 150);
-            this.btnAnonOrder.TabIndex = 2;
-            this.btnAnonOrder.Text = "Create Order";
-            this.btnAnonOrder.UseVisualStyleBackColor = true;
+            //this.btnAnonOrder.Location = new System.Drawing.Point(337, 125);
+            //this.btnAnonOrder.Name = "btnAnonOrder";
+            //this.btnAnonOrder.Size = new System.Drawing.Size(674, 150);
+            //this.btnAnonOrder.TabIndex = 2;
+            //this.btnAnonOrder.Text = "Create Order";
+            //this.btnAnonOrder.UseVisualStyleBackColor = true;
             // 
             // FormMain
             // 
@@ -132,5 +132,5 @@ sealed partial class FormMain
     private Panel panel1;
     private Label label1;
     private Button CustomerList;
-    private Button btnAnonOrder;
+    //private Button btnAnonOrder;
 }

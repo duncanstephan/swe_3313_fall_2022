@@ -9,6 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Services\SalesHistory\**" />
+    <EmbeddedResource Remove="Services\SalesHistory\**" />
+    <None Remove="Services\SalesHistory\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />

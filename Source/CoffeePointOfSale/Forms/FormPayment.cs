@@ -1,30 +1,16 @@
 
-﻿using CoffeePointOfSale.Services.Customer;
-using CoffeePointOfSale.Services.DrinkInOrder__Customizations;
+using CoffeePointOfSale.Services.Customer;
 
-﻿using CoffeePointOfSale.Forms.Base;
+using CoffeePointOfSale.Forms.Base;
 
 using CoffeePointOfSale.Services.FormFactory;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Diagnostics;
-using CoffeePointOfSale.Services.SalesHistory;
 using System.Text.Json;
 using CoffeePointOfSale.Services.Storage;
+using CoffeePointOfSale.Configuration;
 
 namespace CoffeePointOfSale.Forms
 {
-    public partial class FormPayment : Form
+    public partial class FormPayment : FormNoCloseBase
     {
         //The Customer making the order
         Customer customer;
@@ -42,13 +28,18 @@ namespace CoffeePointOfSale.Forms
         //string that will be sent to Customers.json
         string[] salesData;
         bool anonymous = true;
-        
-      
 
 
 
-        public FormPayment()
+
+
+        private readonly ICustomerService _customerService;
+        private IAppSettings _appSettings;
+
+        public FormPayment(IAppSettings appSettings, ICustomerService customerService) : base(appSettings)
         {
+            _customerService = customerService;
+            _appSettings = appSettings;
             InitializeComponent();
         }
 
@@ -58,11 +49,10 @@ namespace CoffeePointOfSale.Forms
             Hide();
             FormFactory.Get<FormReceipt>().Show();
             //validate credit card
-            if (!anonymous)
-            {
-                updatePoints();
-                updateSalesData();
-            }
+            if (!anonymous) updatePoints();
+ 
+            updateSalesData();
+
         }
         private void btnPayWithRP_Click(object sender, EventArgs e)
         {
@@ -120,7 +110,7 @@ namespace CoffeePointOfSale.Forms
         {
             var order = new SalesHistory
             {
-                DateTime = dateTime,
+                DateTime = DateTime.Now.ToString(),
                 Tax = tax,
                 Subtotal = subtotal,
                 Total = total,
@@ -129,24 +119,31 @@ namespace CoffeePointOfSale.Forms
                 PaymentDetails = paymentDetails
             };
             
+
+
             var serializerOptions = new JsonSerializerOptions
             {
                 WriteIndented = true,
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase
             };
-            StorageService salesStorage = new StorageService
-            {
-                //salesStorage.Write("SalesHistory", order);
-                //I hate my life
-            };
-            //salesStorage.GetFilename("Customers.cs");
+
+            var cust = _customerService.Customers["anonymous"];
+            cust.SalesHistory.Add(order);
+            _customerService.Write();
+
+           
+
+            //StorageService salesStorage = new StorageService
+            //{
+            //    //salesStorage.Write("SalesHistory", order);
+            //    //I hate my life
+            //};
+            ////salesStorage.GetFilename("Customers.cs");
             //salesStorage.Write<>("Order", order);
 
             //var json = JsonConvert.SerializeObject(order, serializerOptions);   ///Why does it need to be null? This is literally copied from his slides and linqpad demos what am I doing wrong??
             //json.Dump("Customers.cs");
         }
-        
-       
     }
 }
 

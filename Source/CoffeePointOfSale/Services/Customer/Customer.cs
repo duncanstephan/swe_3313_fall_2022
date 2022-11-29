@@ -1,8 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using CoffeePointOfSale.Services.DrinkInOrder;
+using Newtonsoft.Json;
 
 namespace CoffeePointOfSale.Services.Customer;
 
-public class Customer
+public partial class Customer
 {
     public const string AnonymousCustomerId = "anonymous";
 
@@ -45,10 +46,14 @@ public class Customer
     [JsonIgnore]
     public virtual bool IsAnonymous => Phone == AnonymousCustomerId;
 
+    public List<SalesHistory> SalesHistory { get; set; } = new();
+
+
     public override string ToString()
     {
         return IsAnonymous
             ? "Anonymous Customer - No Reward Points"
             : $"{Phone}, Reward Points: {RewardPoints}";
     }
+
 }
