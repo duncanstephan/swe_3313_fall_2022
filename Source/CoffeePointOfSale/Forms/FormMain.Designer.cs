@@ -35,9 +35,10 @@
             // 
             // btnCreateOrder
             // 
-            this.btnCreateOrder.Location = new System.Drawing.Point(350, 142);
+            this.btnCreateOrder.Location = new System.Drawing.Point(214, 67);
+            this.btnCreateOrder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCreateOrder.Name = "btnCreateOrder";
-            this.btnCreateOrder.Size = new System.Drawing.Size(174, 34);
+            this.btnCreateOrder.Size = new System.Drawing.Size(122, 20);
             this.btnCreateOrder.TabIndex = 0;
             this.btnCreateOrder.Text = "Create Order";
             this.btnCreateOrder.UseVisualStyleBackColor = true;
@@ -45,9 +46,10 @@
             // 
             // btnCustomerList
             // 
-            this.btnCustomerList.Location = new System.Drawing.Point(377, 215);
+            this.btnCustomerList.Location = new System.Drawing.Point(221, 128);
+            this.btnCustomerList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCustomerList.Name = "btnCustomerList";
-            this.btnCustomerList.Size = new System.Drawing.Size(164, 34);
+            this.btnCustomerList.Size = new System.Drawing.Size(115, 20);
             this.btnCustomerList.TabIndex = 1;
             this.btnCustomerList.Text = "Customer List";
             this.btnCustomerList.UseVisualStyleBackColor = true;
@@ -55,9 +57,10 @@
             // 
             // btnManagement
             // 
-            this.btnManagement.Location = new System.Drawing.Point(350, 305);
+            this.btnManagement.Location = new System.Drawing.Point(221, 184);
+            this.btnManagement.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnManagement.Name = "btnManagement";
-            this.btnManagement.Size = new System.Drawing.Size(169, 34);
+            this.btnManagement.Size = new System.Drawing.Size(118, 20);
             this.btnManagement.TabIndex = 2;
             this.btnManagement.Text = "Management";
             this.btnManagement.UseVisualStyleBackColor = true;
@@ -65,15 +68,16 @@
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(560, 270);
             this.Controls.Add(this.btnManagement);
             this.Controls.Add(this.btnCustomerList);
             this.Controls.Add(this.btnCreateOrder);
-            this.Margin = new System.Windows.Forms.Padding(13, 22, 13, 22);
+            this.Margin = new System.Windows.Forms.Padding(9, 13, 9, 13);
             this.Name = "FormMain";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.FormMain_Load);
             this.ResumeLayout(false);
 
         }
