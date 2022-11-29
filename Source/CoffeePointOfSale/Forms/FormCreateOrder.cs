@@ -153,8 +153,16 @@ namespace CoffeePointOfSale.Forms.Base
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Cl6.Text = Cl6.Text +Environment.NewLine + Drink.Text + Environment.NewLine + Cl1.Text;
+            Cl6.Text =  Cl6.Text + Environment.NewLine + Drink.Text  + Cl1.Text;
             Cl1.Text = "";
+            Drink.Text = "";
+            fsubtotal = fsubtotal + subtotal;
+            subtotal = 0;
+            osubtotal.Text = "Order Subtotal: " + fsubtotal.ToString();
+            decimal fptax = (fsubtotal * _appSettings.Tax.Rate) + fsubtotal;
+            finalptax.Text = "Order Total: $" + Math.Round(fptax).ToString();
+            //calculate final tax
+            label6.Text = "Drink Subtotal: ";
             if(Cl6.Text.Length > 0 )
             {
                tax.Text =  "Tax: " +  _appSettings.Tax.Rate.ToString();
@@ -166,8 +174,7 @@ namespace CoffeePointOfSale.Forms.Base
         {
             if(Cl6.Text.Length != 0)
             {
-                Hide();
-                FormFactory.Get<FormPayment>().Show();
+                
             }
            
            
@@ -261,7 +268,7 @@ namespace CoffeePointOfSale.Forms.Base
                         if (comboBox2.Text == drinkList[i].Customizations[j].Name)
                         {
                             int quantity = int.Parse(comboBox3.Text);
-                            Cl1.Text = Cl1.Text + Environment.NewLine + comboBox3.Text + "x" + comboBox2.Text + (drinkList[i].Customizations[j].Price*quantity);
+                            Cl1.Text = Cl1.Text + Environment.NewLine + comboBox3.Text + " x " + comboBox2.Text + " "+ (drinkList[i].Customizations[j].Price*quantity);
                             subtotal =  subtotal + drinkList[i].Customizations[j].Price * quantity;
                         }
 
@@ -269,7 +276,7 @@ namespace CoffeePointOfSale.Forms.Base
                    
                 }
             }
-            label6.Text = subtotal.ToString();
+            label6.Text = "Drink Subtotal: " + subtotal.ToString();
             
             
            
@@ -311,9 +318,14 @@ namespace CoffeePointOfSale.Forms.Base
         {
             if(Cl1.Text.Length> 0)
             {
-                Hide();
-                FormFactory.Get<FormPayment>().Show();
+                
             }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Hide();
+            FormFactory.Get<FormMain>().Show();
         }
     }
 

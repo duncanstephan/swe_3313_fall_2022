@@ -32,7 +32,7 @@ sealed partial class FormMain
             this.CreateOrder = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAnonOrder = new System.Windows.Forms.Button();
+            //this.btnAnonOrder = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -85,14 +85,14 @@ sealed partial class FormMain
             // 
             // btncustomerlist
             // 
-            this.btncustomerlist.Location = new System.Drawing.Point(540, 249);
-            this.btncustomerlist.Margin = new System.Windows.Forms.Padding(2);
-            this.btncustomerlist.Name = "btncustomerlist";
-            this.btncustomerlist.Size = new System.Drawing.Size(263, 57);
-            this.btncustomerlist.TabIndex = 1;
-            this.btncustomerlist.Text = "Customer List";
-            this.btncustomerlist.UseVisualStyleBackColor = true;
-            this.btncustomerlist.Click += new System.EventHandler(this.btncustomerlist_Click);
+            //this.btncustomerlist.Location = new System.Drawing.Point(540, 249);
+           // this.btncustomerlist.Margin = new System.Windows.Forms.Padding(2);
+           // this.btncustomerlist.Name = "btncustomerlist";
+           // this.btncustomerlist.Size = new System.Drawing.Size(263, 57);
+           // this.btncustomerlist.TabIndex = 1;
+          //  this.btncustomerlist.Text = "Customer List";
+          //  this.btncustomerlist.UseVisualStyleBackColor = true;
+        //    this.btncustomerlist.Click += new System.EventHandler(this.btncustomerlist_Click);
             // 
             // FormMain
             // 
