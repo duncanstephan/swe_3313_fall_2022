@@ -22,22 +22,3 @@ public partial class FormManagement : FormNoCloseBase
         Close(); //closes this form
         FormFactory.Get<FormMain>().Show(); //re-opens the main form
     }
-
-    /// <summary>
-    /// Remove this from your project... here to show you how to get the customer list
-    /// </summary>
-    private void DemonstrateGettingCustomerList()
-    {
-        var customerList = _customerService.Customers.List;
-        for (var customerIdx = 0; customerIdx < customerList.Count; customerIdx++)
-        {
-            var customer = customerList[customerIdx];
-            txtDeleteThis.AppendText($"{customerIdx + 1}. {customer}{Environment.NewLine}");
-        }
-    }
-
-    private void OnLoadFormManagement(object sender, EventArgs e)
-    {
-        DemonstrateGettingCustomerList();
-    }
-}
