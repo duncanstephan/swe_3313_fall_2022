@@ -32,7 +32,7 @@ sealed partial class FormMain
             this.CreateOrder = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.btncustomerlist = new System.Windows.Forms.Button();
+            this.btnAnonOrder = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 

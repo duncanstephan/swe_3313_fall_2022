@@ -153,7 +153,7 @@ namespace CoffeePointOfSale.Forms.Base
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Cl6.Text = Drink.Text + Environment.NewLine + Cl1.Text;
+            Cl6.Text = Cl6.Text +Environment.NewLine + Drink.Text + Environment.NewLine + Cl1.Text;
             Cl1.Text = "";
             if(Cl6.Text.Length > 0 )
             {
@@ -169,6 +169,7 @@ namespace CoffeePointOfSale.Forms.Base
                 Hide();
                 FormFactory.Get<FormPayment>().Show();
             }
+           
            
         }
 
@@ -304,6 +305,15 @@ namespace CoffeePointOfSale.Forms.Base
         {
             Hide();
             FormFactory.Get<FormMain>().Show();
+        }
+
+        private void btnfinalize(object sender, EventArgs e)
+        {
+            if(Cl1.Text.Length> 0)
+            {
+                Hide();
+                FormFactory.Get<FormPayment>().Show();
+            }
         }
     }
 
