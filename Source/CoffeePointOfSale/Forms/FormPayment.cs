@@ -127,6 +127,7 @@ namespace CoffeePointOfSale.Forms
                 PointsEarned = pointsEarned,
                 Payment = payment,
                 PaymentDetails = paymentDetails
+                
             };
             
             var serializerOptions = new JsonSerializerOptions

@@ -28,18 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.customersBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnOrder = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.phone,
@@ -52,6 +57,30 @@
             this.dataGridView1.RowTemplate.Height = 33;
             this.dataGridView1.Size = new System.Drawing.Size(866, 427);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(189, 34);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Return to Main Menu";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(565, 545);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(218, 40);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Add New Customer";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // customersBindingSource
+            // 
+            this.customersBindingSource.DataSource = typeof(CoffeePointOfSale.Services.Customer.Customers);
             // 
             // phone
             // 
@@ -84,26 +113,6 @@
             this.btnOrder.Name = "btnOrder";
             this.btnOrder.Width = 150;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(12, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(189, 34);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Return to Main Menu";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(565, 545);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(218, 40);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "Add New Customer";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
             // FormCustomerList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
@@ -116,6 +125,7 @@
             this.Name = "FormCustomerList";
             this.Text = "HIDE Coffee";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customersBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -123,11 +133,12 @@
         #endregion
 
         private DataGridView dataGridView1;
+        private Button button1;
+        private Button button2;
+        private BindingSource customersBindingSource;
         private DataGridViewTextBoxColumn phone;
         private DataGridViewTextBoxColumn firstName;
         private DataGridViewTextBoxColumn lastName;
         private DataGridViewButtonColumn btnOrder;
-        private Button button1;
-        private Button button2;
     }
 }

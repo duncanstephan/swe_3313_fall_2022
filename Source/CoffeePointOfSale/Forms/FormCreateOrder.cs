@@ -75,6 +75,7 @@ namespace CoffeePointOfSale.Forms.Base
 
             ArrayList alist = new ArrayList();
 
+
             var drinkList = _drinkMenuService.DrinkMenu.Drinks;
          
             for (int i = 0; i < drinkList.Count; i++)
