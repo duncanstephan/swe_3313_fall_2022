@@ -24,9 +24,11 @@ using CheckBox = System.Windows.Forms.CheckBox;
 
 namespace CoffeePointOfSale.Forms.Base
 {
+    
     public partial class FormCreateOrder : Base.FormNoCloseBase
 
     {
+        public static FormCreateOrder instance;
         decimal subtotal = 0;
         decimal fsubtotal = 0; 
         int whipped = 1;
@@ -48,6 +50,7 @@ namespace CoffeePointOfSale.Forms.Base
             InitializeComponent();
             _appSettings = appSettings;
             _drinkMenuService = drinkMenuService;
+            instance = this;
             
             
         }
