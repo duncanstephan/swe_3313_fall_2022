@@ -21,12 +21,7 @@ public class Customers
     public IReadOnlyList<Customer> List =>
         _customerDict.Select(c => c.Value)
             .OrderBy(c => c.IsAnonymous ? 0 : 1)
-            .ToList();
-
-    public void deserializeCustomersJson()
-    {
-
-    }
+            .ToList();   
 
     public IReadOnlyList<Customer> GetListOfCustomers()
     {
@@ -46,16 +41,6 @@ public class Customers
             return _customerDict.ContainsKey(phone) ? _customerDict[phone] : null;
         }
     }
-
-    //Indexer to return First Name
-    //public Customer? this[string FirstName]
-    //{
-    //    get
-    //    {
-    //        FirstName = (FirstName ?? string.Empty).Trim();
-    //        return _customerDict.ContainsKey(FirstName) ? _customerDict[FirstName] : null;
-    //    }
-    //}
 
     /// <summary>
     /// Adds a new customer to the customer dictionary.
