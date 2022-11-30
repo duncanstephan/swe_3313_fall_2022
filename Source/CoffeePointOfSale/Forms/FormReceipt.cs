@@ -40,9 +40,9 @@ namespace CoffeePointOfSale.Forms
         private void FormReceipt_Load(object sender, EventArgs e)
         {
             label1.Text = ptr;
-            rototal.Text = rTpay;
-            rTax.Text = rTpay;
-            rTotal.Text = rTsubp;
+            rototal.Text = "Order Subtotal: " + rTsubp;
+            rTax.Text = "Tax: " +rTpay;
+            rTotal.Text = "Order Total: " + rTFpTax;
 
         }
 
