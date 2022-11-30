@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CoffeePointOfSale.Services.Customer;
+using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace CoffeePointOfSale.Forms
 {
@@ -31,7 +33,7 @@ namespace CoffeePointOfSale.Forms
         private void AddCustomer()
         {
             Customer customer = new Customer();//Create new customer object, then assign textbox variables to customer object.
-            customer.Phone = txtPhone.Text;
+            customer.Phone = validatePhone(txtPhone.Text);
             customer.FirstName = txtFirstName.Text;
             customer.LastName = txtLastName.Text;
             customer.RewardPoints = 0;
@@ -43,22 +45,34 @@ namespace CoffeePointOfSale.Forms
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
             AddCustomer();
+            Close();
+            FormFactory.Get<FormCustomerList>().Show();
         }
 
-        private void validatePhone(string phoneNumber)
+        private string validatePhone(string phoneNumber)
         {
-            if (phoneNumber.Length == 10 && isAllNums(phoneNumber) == true)
+            if (phoneNumber.Length == 10 && isAllNums(phoneNumber) == true)//If phone number was not formatted with dashes, adds them. Converts to char array, moves things down, replaces original string with new string.
             {
                 char[] phoneNums = phoneNumber.ToCharArray();
-                phoneNums[10] = phoneNums[8];
-                phoneNums[11] = phoneNums[9];
-                phoneNums[9] = phoneNums[7];
-                phoneNums[8] = phoneNums[6];
-                phoneNums[7] = '-';
-                phoneNums[6] = phoneNums[5];
-                phoneNums[5] = phoneNums[4];
-                phoneNums[4] = phoneNums[3];
-                phoneNums[3] = '-';
+                char[] newNums = new char[12];
+                newNums[10] = phoneNums[8];
+                newNums[11] = phoneNums[9];
+                newNums[9] = phoneNums[7];
+                newNums[8] = phoneNums[6];
+                newNums[7] = '-';
+                newNums[6] = phoneNums[5];
+                newNums[5] = phoneNums[4];
+                newNums[4] = phoneNums[3];
+                newNums[3] = '-';
+                newNums[2] = phoneNums[2];
+                newNums[1] = phoneNums[1];
+                newNums[0] = phoneNums[0];
+
+                phoneNumber = "";
+                foreach (char c in newNums)
+                {
+                    phoneNumber += c;
+                }
             }
 
             try
@@ -69,12 +83,18 @@ namespace CoffeePointOfSale.Forms
                 }
                 else
                 {
-                    throw new Exception("Phone Number already exists in Customer Records.");
+                    throw new Exception();
                 }
             } catch (Exception e)
             {
-
+                var o = phoneNumber;
+                GCHandle gch = GCHandle.Alloc(o, GCHandleType.Pinned);
+                IntPtr ptr = gch.AddrOfPinnedObject();
+                
+                string temp = "Error Code " + ptr + ": Phone Number already exists in Customer Records.";
             }
+
+            return phoneNumber;
         }
 
         private bool isAllNums(string numbers)
