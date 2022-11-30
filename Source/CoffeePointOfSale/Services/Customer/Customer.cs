@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 using CoffeePointOfSale.Services.DrinkInOrder;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace CoffeePointOfSale.Services.Customer;
 
