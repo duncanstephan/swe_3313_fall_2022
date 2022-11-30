@@ -44,6 +44,12 @@ public partial class FormManagement : FormNoCloseBase
         {
             foreach (var order in customer.SalesHistory)
             {
+                decimal rewardsRedeemed = 0;
+
+                if (order.PaymentDetails == "RP")
+                {
+                    rewardsRedeemed = order.Total * 10;
+                }
                 var csvExtractLine = new CsvExtract
                 {
                     CustomerId = customer.Phone,
@@ -52,8 +58,8 @@ public partial class FormManagement : FormNoCloseBase
                     OrderTax = order.Tax,
                     OrderTotalPrice = order.Total,
                     OrderPaymentType = order.PaymentDetails,
-
-                    //RewardsRedeemed = 
+                    RewardsRedeemed =  rewardsRedeemed,
+                    
                     //OrderDetails = order.ToString()
                 };
 
