@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtnPayWithCredit = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -40,18 +40,18 @@
             this.ototalp = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // button1
+            // BtnPayWithCredit
             // 
-            this.button1.BackColor = System.Drawing.Color.LimeGreen;
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(356, 110);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(164, 41);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Pay With Credit Card";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.BtnPayWithCredit.BackColor = System.Drawing.Color.LimeGreen;
+            this.BtnPayWithCredit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BtnPayWithCredit.Location = new System.Drawing.Point(356, 110);
+            this.BtnPayWithCredit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.BtnPayWithCredit.Name = "BtnPayWithCredit";
+            this.BtnPayWithCredit.Size = new System.Drawing.Size(164, 41);
+            this.BtnPayWithCredit.TabIndex = 0;
+            this.BtnPayWithCredit.Text = "Pay With Credit Card";
+            this.BtnPayWithCredit.UseVisualStyleBackColor = false;
+            this.BtnPayWithCredit.Click += new System.EventHandler(this.BtnPayWithCredit_Click);
             // 
             // textBox1
             // 
@@ -149,7 +149,7 @@
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.BtnPayWithCredit);
             this.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.Name = "FormPayment";
             this.Text = "FormPayment";
@@ -161,7 +161,7 @@
 
         #endregion
 
-        private Button button1;
+        private Button BtnPayWithCredit;
         private TextBox textBox1;
         private TextBox textBox2;
         private TextBox textBox3;
