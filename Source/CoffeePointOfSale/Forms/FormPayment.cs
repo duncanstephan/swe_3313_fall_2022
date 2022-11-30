@@ -18,6 +18,8 @@ namespace CoffeePointOfSale.Forms
         //public static FormPayment instance;
         //The Customer making the order
         Customer customer;
+        public string paytorec;
+        public static FormPayment instance;
 
         FormCreateOrder OrderScreen = new FormCreateOrder();
 
@@ -31,10 +33,15 @@ namespace CoffeePointOfSale.Forms
         string paymentDetails;
 
         string OrderData;
-
+        string ordersum;
+        string ptr;
+        string customerCSV;
         //string that will be sent to Customers.json
         string[] salesData;
         bool anonymous = true;
+        public string Tpay;
+        public string Tsubp;
+        public string TFpTax;
 
         private readonly ICustomerService _customerService;
         private IAppSettings _appSettings;
@@ -46,14 +53,28 @@ namespace CoffeePointOfSale.Forms
         }
         public FormPayment(IAppSettings appSettings, ICustomerService customerService) : base(appSettings)
         {
+            instance = this;
             _customerService = customerService;
             _appSettings = appSettings;
             InitializeComponent();
+            customerCSV = FormCreateOrder.instance.customerKey;
             OrderData = FormCreateOrder.instance.OrderData;
             orderDataSort(OrderData);
+            appendOrderData();
+            ordersum = FormCreateOrder.instance.ordersum;
+            Tpay = FormCreateOrder.instance.Tpay;
+            Tsubp = FormCreateOrder.instance.Tsubp;
+            TFpTax = FormCreateOrder.instance.TFpTax;
+            //ptr = FormCreateOrder.instance.
 
         }
 
+        private void appendOrderData()
+        {
+            string temp = customerCSV;
+            temp += ", " + OrderData;
+            OrderData = temp;
+        }
 
         //private void btnPayWithCredit_Click(object sender, EventArgs e)
         //{
@@ -160,6 +181,9 @@ namespace CoffeePointOfSale.Forms
 
         private void button1_Click(object sender, EventArgs e)
         {
+            //sends payment data to receipt.
+            paytorec = label1.Text;
+
             Hide();
             FormFactory.Get<FormReceipt>().Show();
             //validate credit card
@@ -173,7 +197,17 @@ namespace CoffeePointOfSale.Forms
             
         }
 
-      
+        private void FormPayment_Load(object sender, EventArgs e)
+        {
+            label1.Text = ordersum;
+            osubtotal.Text = "Order Subtotal :$"+Tsubp;
+            taxp.Text = "Tax: $" + Tpay;
+            ototalp.Text = "Order Total: $" + TFpTax;
+
+
+        }
+
+
 
         //private void OnLoad(object sender, EventArgs e)
         //{
