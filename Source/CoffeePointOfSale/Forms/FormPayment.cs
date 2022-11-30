@@ -62,7 +62,6 @@ namespace CoffeePointOfSale.Forms
             customerCSV = FormCreateOrder.instance.customerKey;
             OrderData = FormCreateOrder.instance.OrderData;
             orderDataSort(OrderData);
-            appendOrderData();
             ordersum = FormCreateOrder.instance.ordersum;
             Tpay = FormCreateOrder.instance.Tpay;
             Tsubp = FormCreateOrder.instance.Tsubp;
@@ -73,8 +72,8 @@ namespace CoffeePointOfSale.Forms
 
         private void appendOrderData()
         {
-            string temp = customerCSV;
-            temp += ", " + OrderData;
+            string temp = OrderData;
+            temp += "," + customerCSV;
             OrderData = temp;
         }
 
@@ -109,6 +108,7 @@ namespace CoffeePointOfSale.Forms
         {
             ///sets data to the string sent from FormCreateOrder
             //OrderData = data;
+            appendOrderData();
             salesData = data.Split(',');
             
             //Assigning SalesData Variables to the string from FormCreateOrder
