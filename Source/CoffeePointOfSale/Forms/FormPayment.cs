@@ -193,6 +193,7 @@ namespace CoffeePointOfSale.Forms
                 textBox1.ForeColor = Color.Red;
                 textBox1.Text = "Card number not valid";
             }
+            //only put data to be transfered after successful validation inside the else statment!!!
             else
             {
                 Hide();
