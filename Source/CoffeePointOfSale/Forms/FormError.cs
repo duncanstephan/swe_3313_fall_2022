@@ -13,10 +13,11 @@ namespace CoffeePointOfSale.Forms
     
     public partial class FormError : Form
     {
-
+        public static FormError instance;
         public FormError()
         {
             InitializeComponent();
+            instance = this;
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)

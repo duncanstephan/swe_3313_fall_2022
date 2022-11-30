@@ -18,10 +18,12 @@ namespace CoffeePointOfSale.Forms
     public partial class FormAddCustomer : FormBase
     {
         private readonly ICustomerService _customerService;
+        public static FormAddCustomer instance;
         public FormAddCustomer(ICustomerService customerService)
         {
             _customerService = customerService;
             InitializeComponent();
+            instance = this;
         }
 
         private void btnReturnToMainMenu_Click(object sender, EventArgs e)
