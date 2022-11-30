@@ -234,6 +234,7 @@ namespace CoffeePointOfSale.Forms
 
         private void BtnPayWithCredit_Click(object sender, EventArgs e)
         {
+            paytorec = label1.Text;
             credit = true;
             payment = "Credit";
             ///paymentDetails = last four digits of card
