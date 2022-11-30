@@ -54,22 +54,25 @@ namespace CoffeePointOfSale.Forms
 
 
         private void btnPayWithCredit_Click(object sender, EventArgs e)
-        {
-            Hide();
-            FormFactory.Get<FormReceipt>().Show();
+        {           
+            if (!anonymous)
+            {
+                updatePoints();
+                updateSalesData();
+            }
+
             //validate credit card
             CreditCardDetector detector = new CreditCardDetector(textBoxCardNum.Text);
             bool Valid = detector.IsValid();
             if (Valid == false)
             {
                 textBoxCardNum.ForeColor = Color.Red;
-                textBoxCardNum.Text = "Card not valid";
+                textBoxCardNum.Text = "Card number not valid";
             }
-
-            if (!anonymous)
+            else
             {
-                updatePoints();
-                updateSalesData();
+                Hide();
+                FormFactory.Get<FormReceipt>().Show();
             }
         }
         private void btnPayWithRP_Click(object sender, EventArgs e)
