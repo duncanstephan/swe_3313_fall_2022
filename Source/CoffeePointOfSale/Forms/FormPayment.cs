@@ -25,7 +25,7 @@ namespace CoffeePointOfSale.Forms
 
         //variables to send to json file for sales data
         string dateTime;
-        decimal tax;
+        public decimal tax;
         decimal subtotal;
         decimal total;
         int pointsEarned;
@@ -112,6 +112,10 @@ namespace CoffeePointOfSale.Forms
             tax = Convert.ToDecimal(salesData[0]);
             subtotal = Convert.ToDecimal(salesData[1]);
             total = Convert.ToDecimal(salesData[2]);
+            //pointsEarned // 
+            //paymentDetails
+
+
             
             //payment = salesData[6];
             //paymentDetails = salesData[7];
@@ -200,10 +204,15 @@ namespace CoffeePointOfSale.Forms
         private void FormPayment_Load(object sender, EventArgs e)
         {
             label1.Text = ordersum;
-            osubtotal.Text = "Order Subtotal :$"+Tsubp;
-            taxp.Text = "Tax: $" + Tpay;
-            ototalp.Text = "Order Total: $" + TFpTax;
+            label3.Text = "Order Subtotal :$"+Tsubp;
+            label4.Text = "Tax: $" + Tpay;
+            label5.Text = "Order Total: $" + TFpTax;
 
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
 
         }
 

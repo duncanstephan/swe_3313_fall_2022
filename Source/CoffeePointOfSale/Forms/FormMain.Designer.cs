@@ -41,7 +41,7 @@
             this.btnCreateOrder.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(166)))), ((int)(((byte)(255)))));
             this.btnCreateOrder.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnCreateOrder.ForeColor = System.Drawing.Color.White;
-            this.btnCreateOrder.Location = new System.Drawing.Point(491, 171);
+            this.btnCreateOrder.Location = new System.Drawing.Point(489, 165);
             this.btnCreateOrder.Margin = new System.Windows.Forms.Padding(2);
             this.btnCreateOrder.Name = "btnCreateOrder";
             this.btnCreateOrder.Size = new System.Drawing.Size(350, 85);
@@ -55,7 +55,7 @@
             this.btnCustomerList.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(211)))), ((int)(((byte)(83)))));
             this.btnCustomerList.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnCustomerList.ForeColor = System.Drawing.Color.White;
-            this.btnCustomerList.Location = new System.Drawing.Point(498, 305);
+            this.btnCustomerList.Location = new System.Drawing.Point(489, 285);
             this.btnCustomerList.Margin = new System.Windows.Forms.Padding(2);
             this.btnCustomerList.Name = "btnCustomerList";
             this.btnCustomerList.Size = new System.Drawing.Size(343, 85);
@@ -69,7 +69,7 @@
             this.btnManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(95)))), ((int)(((byte)(98)))));
             this.btnManagement.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnManagement.ForeColor = System.Drawing.Color.White;
-            this.btnManagement.Location = new System.Drawing.Point(532, 442);
+            this.btnManagement.Location = new System.Drawing.Point(534, 404);
             this.btnManagement.Margin = new System.Windows.Forms.Padding(2);
             this.btnManagement.Name = "btnManagement";
             this.btnManagement.Size = new System.Drawing.Size(275, 51);
@@ -84,7 +84,7 @@
             this.panel1.Controls.Add(this.mainmenu);
             this.panel1.Location = new System.Drawing.Point(-1, -1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1368, 82);
+            this.panel1.Size = new System.Drawing.Size(1446, 82);
             this.panel1.TabIndex = 3;
             // 
             // mainmenu
@@ -92,7 +92,7 @@
             this.mainmenu.AutoSize = true;
             this.mainmenu.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.mainmenu.ForeColor = System.Drawing.Color.White;
-            this.mainmenu.Location = new System.Drawing.Point(562, 10);
+            this.mainmenu.Location = new System.Drawing.Point(535, 10);
             this.mainmenu.Name = "mainmenu";
             this.mainmenu.Size = new System.Drawing.Size(226, 54);
             this.mainmenu.TabIndex = 0;

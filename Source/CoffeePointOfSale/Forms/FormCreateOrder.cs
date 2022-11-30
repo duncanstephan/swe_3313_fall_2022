@@ -197,6 +197,7 @@ namespace CoffeePointOfSale.Forms.Base
             label6.Text = "Drink Subtotal: ";
             if (Cl6.Text.Length > 0)
             {
+
                 tax.Text = "Tax: " + (Math.Round(_appSettings.Tax.Rate*fsubtotal,2,MidpointRounding.AwayFromZero));
             }
             
@@ -208,7 +209,7 @@ namespace CoffeePointOfSale.Forms.Base
             Tpay = orderTax.ToString();
             Tsubp = fsubtotal.ToString();
             TFpTax = fptax.ToString();
-            OrderData = orderTax.ToString() + "," + fsubtotal.ToString() + "," + fptax.ToString();
+            OrderData = orderTax.ToString() + "," + fsubtotal.ToString() + "," + fptax.ToString(); //star.
             if (Cl6.Text.Length > 0)
             {
                 ordersum = Cl6.Text;
