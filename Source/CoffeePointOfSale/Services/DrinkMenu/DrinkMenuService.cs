@@ -13,6 +13,7 @@ public class DrinkMenuService : IDrinkMenuService
         _storageService = storageService;
         
         List<Drink> Drinks = _storageService.Read<List<Drink>>(nameof(DrinkMenu));
+        //Reads from json
 
         DrinkMenu = new DrinkMenu.DrinkMenu()
         {

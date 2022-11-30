@@ -47,6 +47,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -91,9 +92,10 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(511, 398);
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(447, 387);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 15);
+            this.label6.Size = new System.Drawing.Size(153, 28);
             this.label6.TabIndex = 16;
             this.label6.Text = "Drink  Subtotal: ";
             this.label6.Click += new System.EventHandler(this.label6_Click_1);
@@ -132,9 +134,10 @@
             // Drink
             // 
             this.Drink.AutoSize = true;
+            this.Drink.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Drink.Location = new System.Drawing.Point(23, 368);
             this.Drink.Name = "Drink";
-            this.Drink.Size = new System.Drawing.Size(0, 15);
+            this.Drink.Size = new System.Drawing.Size(0, 19);
             this.Drink.TabIndex = 0;
             this.Drink.Click += new System.EventHandler(this.Drink_Click);
             // 
@@ -149,11 +152,11 @@
             // Cl1
             // 
             this.Cl1.AutoSize = true;
+            this.Cl1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Cl1.Location = new System.Drawing.Point(47, 383);
             this.Cl1.Name = "Cl1";
-            this.Cl1.Size = new System.Drawing.Size(12, 15);
+            this.Cl1.Size = new System.Drawing.Size(0, 19);
             this.Cl1.TabIndex = 12;
-            this.Cl1.Text = "_";
             this.Cl1.Click += new System.EventHandler(this.Customization_Click);
             // 
             // label4
@@ -203,9 +206,10 @@
             // Cl6
             // 
             this.Cl6.AutoSize = true;
-            this.Cl6.Location = new System.Drawing.Point(65, 67);
+            this.Cl6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Cl6.Location = new System.Drawing.Point(61, 74);
             this.Cl6.Name = "Cl6";
-            this.Cl6.Size = new System.Drawing.Size(0, 15);
+            this.Cl6.Size = new System.Drawing.Size(0, 19);
             this.Cl6.TabIndex = 19;
             this.Cl6.Click += new System.EventHandler(this.label6_Click);
             // 
@@ -238,7 +242,7 @@
             this.tax.Size = new System.Drawing.Size(30, 19);
             this.tax.TabIndex = 2;
             this.tax.Text = "Tax:";
-            this.tax.Click += new System.EventHandler(this.tax_Click);
+            
             // 
             // finalptax
             // 
@@ -265,6 +269,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Controls.Add(this.button5);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Location = new System.Drawing.Point(-14, -9);
             this.panel1.Name = "panel1";
@@ -275,14 +280,26 @@
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Black;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(572, 26);
+            this.label5.Location = new System.Drawing.Point(567, 18);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(203, 45);
+            this.label5.Size = new System.Drawing.Size(252, 54);
             this.label5.TabIndex = 11;
             this.label5.Text = "Create Order";
             this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(82)))), ((int)(((byte)(94)))));
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.Location = new System.Drawing.Point(41, 21);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(143, 37);
+            this.button5.TabIndex = 12;
+            this.button5.Text = "Return to Main Menu";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.returntomain);
             // 
             // FormCreateOrder
             // 
@@ -329,5 +346,6 @@
         private Label Cl6;
         private Label label6;
         private Panel panel1;
+        private Button button5;
     }
 }

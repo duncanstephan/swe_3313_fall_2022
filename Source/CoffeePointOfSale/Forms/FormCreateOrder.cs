@@ -74,6 +74,7 @@ namespace CoffeePointOfSale.Forms.Base
 
 
             var drinkList = _drinkMenuService.DrinkMenu.Drinks;
+            //if (comboBox1.Text == "")
          
             for (int i = 0; i < drinkList.Count; i++)
             {
@@ -178,10 +179,7 @@ namespace CoffeePointOfSale.Forms.Base
 
     
         
-        private void ComputeTotal()
-        {
-            var tax = _appSettings;
-        }
+       
        
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
@@ -270,9 +268,11 @@ namespace CoffeePointOfSale.Forms.Base
 
         }
 
-        private void tax_Click(object sender, EventArgs e)
+     
+        private void returntomain(object sender, EventArgs e)
         {
-
+            Hide();
+            FormFactory.Get<FormMain>().Show();
         }
     }
 
