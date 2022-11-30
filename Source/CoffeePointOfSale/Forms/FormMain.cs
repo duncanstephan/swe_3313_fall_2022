@@ -28,5 +28,10 @@ namespace CoffeePointOfSale.Forms
             Hide();
             FormFactory.Get<FormManagement>().Show();
         }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

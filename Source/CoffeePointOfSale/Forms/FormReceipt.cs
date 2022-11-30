@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace CoffeePointOfSale.Forms
 {
-    public partial class FormReceipt : Form
+    public partial class FormReceipt : Base.FormNoCloseBase
     {
         public FormReceipt()
         {

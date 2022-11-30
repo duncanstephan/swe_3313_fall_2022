@@ -41,13 +41,13 @@
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.Cl6 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.osubtotal = new System.Windows.Forms.Label();
             this.tax = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.finalptax = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -62,7 +62,6 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.panel1);
             this.splitContainer1.Panel1.Controls.Add(this.label6);
             this.splitContainer1.Panel1.Controls.Add(this.comboBox3);
             this.splitContainer1.Panel1.Controls.Add(this.comboBox2);
@@ -78,25 +77,25 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(151)))), ((int)(((byte)(126)))));
-            this.splitContainer1.Panel2.Controls.Add(this.panel2);
             this.splitContainer1.Panel2.Controls.Add(this.Cl6);
             this.splitContainer1.Panel2.Controls.Add(this.button4);
-            this.splitContainer1.Panel2.Controls.Add(this.label3);
+            this.splitContainer1.Panel2.Controls.Add(this.osubtotal);
             this.splitContainer1.Panel2.Controls.Add(this.tax);
-            this.splitContainer1.Panel2.Controls.Add(this.label1);
+            this.splitContainer1.Panel2.Controls.Add(this.finalptax);
             this.splitContainer1.Panel2.Controls.Add(this.button1);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Size = new System.Drawing.Size(1364, 760);
-            this.splitContainer1.SplitterDistance = 679;
+            this.splitContainer1.SplitterDistance = 678;
             this.splitContainer1.TabIndex = 2;
             this.splitContainer1.SplitterMoved += new System.Windows.Forms.SplitterEventHandler(this.splitContainer1_SplitterMoved);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(511, 398);
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(447, 387);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 15);
+            this.label6.Size = new System.Drawing.Size(153, 28);
             this.label6.TabIndex = 16;
             this.label6.Text = "Drink  Subtotal: ";
             this.label6.Click += new System.EventHandler(this.label6_Click_1);
@@ -135,9 +134,10 @@
             // Drink
             // 
             this.Drink.AutoSize = true;
+            this.Drink.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Drink.Location = new System.Drawing.Point(23, 368);
             this.Drink.Name = "Drink";
-            this.Drink.Size = new System.Drawing.Size(0, 15);
+            this.Drink.Size = new System.Drawing.Size(0, 19);
             this.Drink.TabIndex = 0;
             this.Drink.Click += new System.EventHandler(this.Drink_Click);
             // 
@@ -152,11 +152,11 @@
             // Cl1
             // 
             this.Cl1.AutoSize = true;
+            this.Cl1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Cl1.Location = new System.Drawing.Point(47, 383);
             this.Cl1.Name = "Cl1";
-            this.Cl1.Size = new System.Drawing.Size(12, 15);
+            this.Cl1.Size = new System.Drawing.Size(0, 19);
             this.Cl1.TabIndex = 12;
-            this.Cl1.Text = "_";
             this.Cl1.Click += new System.EventHandler(this.Customization_Click);
             // 
             // label4
@@ -206,9 +206,10 @@
             // Cl6
             // 
             this.Cl6.AutoSize = true;
-            this.Cl6.Location = new System.Drawing.Point(65, 67);
+            this.Cl6.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Cl6.Location = new System.Drawing.Point(61, 74);
             this.Cl6.Name = "Cl6";
-            this.Cl6.Size = new System.Drawing.Size(0, 15);
+            this.Cl6.Size = new System.Drawing.Size(0, 19);
             this.Cl6.TabIndex = 19;
             this.Cl6.Click += new System.EventHandler(this.label6_Click);
             // 
@@ -222,15 +223,15 @@
             this.button4.Text = "Clear";
             this.button4.UseVisualStyleBackColor = false;
             // 
-            // label3
+            // osubtotal
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(267, 380);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(103, 19);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Order Subtotal:";
+            this.osubtotal.AutoSize = true;
+            this.osubtotal.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.osubtotal.Location = new System.Drawing.Point(267, 380);
+            this.osubtotal.Name = "osubtotal";
+            this.osubtotal.Size = new System.Drawing.Size(103, 19);
+            this.osubtotal.TabIndex = 3;
+            this.osubtotal.Text = "Order Subtotal:";
             // 
             // tax
             // 
@@ -241,18 +242,18 @@
             this.tax.Size = new System.Drawing.Size(30, 19);
             this.tax.TabIndex = 2;
             this.tax.Text = "Tax:";
-            this.tax.Click += new System.EventHandler(this.tax_Click);
+            
             // 
-            // label1
+            // finalptax
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(267, 414);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 28);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Order Total:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.finalptax.AutoSize = true;
+            this.finalptax.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.finalptax.Location = new System.Drawing.Point(267, 414);
+            this.finalptax.Name = "finalptax";
+            this.finalptax.Size = new System.Drawing.Size(114, 28);
+            this.finalptax.TabIndex = 1;
+            this.finalptax.Text = "Order Total:";
+            this.finalptax.Click += new System.EventHandler(this.label1_Click);
             // 
             // button1
             // 
@@ -265,35 +266,40 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.Black;
+            this.panel1.Controls.Add(this.button5);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Location = new System.Drawing.Point(-14, -9);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1446, 82);
+            this.panel1.TabIndex = 17;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Black;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(483, 14);
+            this.label5.Location = new System.Drawing.Point(567, 18);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(203, 45);
+            this.label5.Size = new System.Drawing.Size(252, 54);
             this.label5.TabIndex = 11;
             this.label5.Text = "Create Order";
             this.label5.Click += new System.EventHandler(this.label5_Click);
             // 
-            // panel1
+            // button5
             // 
-            this.panel1.BackColor = System.Drawing.Color.Black;
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Location = new System.Drawing.Point(-10, -7);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1371, 71);
-            this.panel1.TabIndex = 17;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.Black;
-            this.panel2.Location = new System.Drawing.Point(-14, -10);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(695, 74);
-            this.panel2.TabIndex = 20;
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(82)))), ((int)(((byte)(94)))));
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.Location = new System.Drawing.Point(41, 21);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(143, 37);
+            this.button5.TabIndex = 12;
+            this.button5.Text = "Return to Main Menu";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.returntomain);
             // 
             // FormCreateOrder
             // 
@@ -301,6 +307,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(151)))), ((int)(((byte)(126)))));
             this.ClientSize = new System.Drawing.Size(1364, 760);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.splitContainer1);
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "FormCreateOrder";
@@ -321,9 +328,9 @@
         #endregion
 
         private SplitContainer splitContainer1;
-        private Label label1;
+        private Label finalptax;
         private Button button1;
-        private Label label3;
+        private Label osubtotal;
         private Label tax;
         private ComboBox comboBox1;
         private Button button3;
@@ -339,6 +346,6 @@
         private Label Cl6;
         private Label label6;
         private Panel panel1;
-        private Panel panel2;
+        private Button button5;
     }
 }
