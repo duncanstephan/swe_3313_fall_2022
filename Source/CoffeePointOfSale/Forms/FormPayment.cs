@@ -1,18 +1,30 @@
-using CoffeePointOfSale.Services.Customer;
 
-using CoffeePointOfSale.Forms.Base;
+﻿using CoffeePointOfSale.Services.Customer;
+using CoffeePointOfSale.Services.DrinkInOrder__Customizations;
+
+﻿using CoffeePointOfSale.Forms.Base;
 
 using CoffeePointOfSale.Services.FormFactory;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using System.Diagnostics;
+using CoffeePointOfSale.Services.SalesHistory;
 using System.Text.Json;
 using CoffeePointOfSale.Services.Storage;
-using CoffeePointOfSale.Configuration;
-using System.Text.Json.Nodes;
-using CoffeePointOfSale.Services.SalesHistory;
-using CoffeePointOfSale.Configuration;
 
 namespace CoffeePointOfSale.Forms
 {
-    public partial class FormPayment : FormNoCloseBase
+    public partial class FormPayment : Form
     {
         //The Customer making the order
         Customer customer;
@@ -30,14 +42,13 @@ namespace CoffeePointOfSale.Forms
         //string that will be sent to Customers.json
         string[] salesData;
         bool anonymous = true;
+        
+      
 
-        private readonly ICustomerService _customerService;
-        private IAppSettings _appSettings;
 
-        public FormPayment(IAppSettings appSettings, ICustomerService customerService) : base(appSettings)
+
+        public FormPayment()
         {
-            _customerService = customerService;
-            _appSettings = appSettings;
             InitializeComponent();
         }
 
@@ -47,10 +58,11 @@ namespace CoffeePointOfSale.Forms
             Hide();
             FormFactory.Get<FormReceipt>().Show();
             //validate credit card
-            if (!anonymous) updatePoints();
-
-            updateSalesData();
-
+            if (!anonymous)
+            {
+                updatePoints();
+                updateSalesData();
+            }
         }
         private void btnPayWithRP_Click(object sender, EventArgs e)
         {
@@ -60,7 +72,7 @@ namespace CoffeePointOfSale.Forms
                 //FormFactory.Get<FormError>().Show();
             }
             //if rewards points aren't enough, show error screen
-            else
+            else 
             {
                 updateSalesData();
                 //subtract rewards points from total
@@ -68,10 +80,10 @@ namespace CoffeePointOfSale.Forms
             }
         }
 
-        public void orderDataSort(string data)
+        private void orderDataSort(string data)
         {
             ///sets data to the string sent from FormCreateOrder
-            ///CreateOrder.ToString = data;        
+            ///CreateOrder.ToString = data;         
             salesData = data.Split(',');
 
             //Indexes may need to be changed depending on what order the data is present in the string
@@ -80,7 +92,7 @@ namespace CoffeePointOfSale.Forms
             subtotal = Convert.ToDecimal(salesData[3]);
             total = Convert.ToDecimal(salesData[4]);
             payment = salesData[6];
-            paymentDetails = salesData[7];
+            paymentDetails= salesData[7];
             //...etc, including drinksInOrder
 
             //string json = JsonConvert.SerializeObject(salesData);
@@ -88,16 +100,16 @@ namespace CoffeePointOfSale.Forms
 
         private void updatePoints()
         {
-            if (!anonymous)
+            if(!anonymous) 
             {
-                //code written assuming string sent by CreateOrder is in the same order as example Excel sheet from UML design
+                //code written assuming string sent by CreateOrder is in the same order as example Excel sheet from UML design 
                 string[] subStrings = data.Split(',');
                 decimal subTotal = Convert.ToDecimal(subStrings[5]);
 
                 //math for adding rewards points (1pt per $1 rounding down)
                 Math.Floor(subTotal);
                 int newPoints = Convert.ToInt32(subTotal);
-                pointsEarned = newPoints;
+                pointsEarned = newPoints; 
                 int currentPoints = customer.getRewardsPoints();
                 currentPoints += newPoints;
 
@@ -108,45 +120,37 @@ namespace CoffeePointOfSale.Forms
         {
             var order = new SalesHistory
             {
-                DateTime = DateTime.Now.ToString(),
+                DateTime = dateTime,
                 Tax = tax,
                 Subtotal = subtotal,
                 Total = total,
                 PointsEarned = pointsEarned,
                 Payment = payment,
                 PaymentDetails = paymentDetails
+                
             };
-
+            
             var serializerOptions = new JsonSerializerOptions
             {
                 WriteIndented = true,
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase
             };
-
-            var cust = _customerService.Customers["anonymous"];
-            cust.SalesHistory.Add(order);
-            _customerService.Write();
-
-            if (!anonymous)
+            StorageService salesStorage = new StorageService
             {
-                var RewardsCust = _customerService.Customers[customer.Phone];
-                RewardsCust.SalesHistory.Add(order);
-                _customerService.Write();
-            }
+                //salesStorage.Write("SalesHistory", order);
+                //I hate my life
+            };
+            //salesStorage.GetFilename("Customers.cs");
+            //salesStorage.Write<>("Order", order);
+
+            //var json = JsonConvert.SerializeObject(order, serializerOptions);   ///Why does it need to be null? This is literally copied from his slides and linqpad demos what am I doing wrong??
+            //json.Dump("Customers.cs");
         }
-
-
-        //private void label1_Click(object sender, EventArgs e)
-        //{
-        //    label1.Text = "RewardsPayment\n\n" + "Rewards Points Needed: " + /*Points needed for order*/ "\n\n" + "Current Rewards Points: " /*+ customer.RewardPoints*/;
-        //}
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //listBox1.Text = customer.OrderData;
-        }
+        
+       
     }
 }
+
 
 //FormOrder will send an encapsulated string/ToString object with Drink order info (need to have FormCreateOrder first to work on this part)
 //Payment will have to understand what financial info is in that to know how many rewards points to add/subtract
