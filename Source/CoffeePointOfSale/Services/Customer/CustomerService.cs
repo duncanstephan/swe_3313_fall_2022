@@ -28,5 +28,5 @@ public class CustomerService : ICustomerService
 
     public Customers Customers { get; init; }
 
-    public void Write() => _storageService.Write(nameof(Customer), Customers);
+    public void Write() => _storageService.Write(nameof(Customers), Customers);
 }

@@ -2,6 +2,11 @@
 using CoffeePointOfSale.Forms.Base;
 using CoffeePointOfSale.Services.Customer;
 using CoffeePointOfSale.Services.FormFactory;
+using CoffeePointOfSale.Services.CsvExtract;
+using CsvHelper;
+using System.Diagnostics;
+using System.Formats.Asn1;
+using System.Globalization;
 
 namespace CoffeePointOfSale.Forms;
 
@@ -9,11 +14,13 @@ public partial class FormManagement : FormNoCloseBase
 {
     private readonly ICustomerService _customerService;
     private IAppSettings _appSettings;
+    private readonly ICsvExtract _csvExtract;
 
-    public FormManagement(IAppSettings appSettings, ICustomerService customerService) : base(appSettings)
+    public FormManagement(IAppSettings appSettings, ICustomerService customerService, ICsvExtract csvExtract) : base(appSettings)
     {
         _customerService = customerService;
         _appSettings = appSettings;
+        _csvExtract = csvExtract;
         InitializeComponent();
     }
 
@@ -22,22 +29,70 @@ public partial class FormManagement : FormNoCloseBase
         Close(); //closes this form
         FormFactory.Get<FormMain>().Show(); //re-opens the main form
     }
-
-    /// <summary>
-    /// Remove this from your project... here to show you how to get the customer list
-    /// </summary>
-    private void DemonstrateGettingCustomerList()
-    {
-        var customerList = _customerService.Customers.List;
-        for (var customerIdx = 0; customerIdx < customerList.Count; customerIdx++)
-        {
-            var customer = customerList[customerIdx];
-            txtDeleteThis.AppendText($"{customerIdx + 1}. {customer.Phone + ", " + customer.FirstName + ", " + customer.LastName + ", " + customer.RewardPoints}{Environment.NewLine}");
-        }
-    }
-
     private void OnLoadFormManagement(object sender, EventArgs e)
     {
-        DemonstrateGettingCustomerList();
+        SetTitle(_csvExtract.Extract());
+    }
+
+    private void BtnGenCsv_Click(object sender, EventArgs e)
+    {
+        var csvExtractLines = new List<CsvExtract>(); //contains CSV extract data
+
+        //loop through each customer and each order - output will have N customers * M orders lines
+        //for example, 5 customers each with 5 orders will produce 25 lines of output
+        foreach (var customer in _customerService.Customers.List)
+        {
+            foreach (var order in customer.SalesHistory)
+            {
+                decimal rewardsRedeemed = 0;
+
+                if (order.PaymentDetails == "RP")
+                {
+                    rewardsRedeemed = order.Total * 10;
+                }
+                var csvExtractLine = new CsvExtract
+                {
+                    CustomerId = customer.Phone,
+                    OrderDate = order.DateTime,
+                    OrderSubTotal = order.Subtotal,
+                    OrderTax = order.Tax,
+                    OrderTotalPrice = order.Total,
+                    OrderPaymentType = order.PaymentDetails,
+                    RewardsRedeemed =  rewardsRedeemed,
+                    
+                    //OrderDetails = order.ToString()
+                };
+
+                csvExtractLines.Add(csvExtractLine);
+
+            }
+            //set path and filename
+            var outputDirectory = Path.GetTempPath(); //find OS temp directory
+            var csvFilename = $"output_{DateTime.Now.Ticks}.csv";
+            var csvPathAndFilename = Path.Join(outputDirectory, csvFilename);
+
+            //write csvExtractLines via CSVHelper
+            using (var writer = new StreamWriter(csvPathAndFilename))
+            using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture))
+            {
+                csv.WriteRecords(csvExtractLines);
+            }
+
+            //attempt to open in Excel (or whatever is registered to open .csv files on the machine)
+            try
+            {
+                var processStartInfo = new ProcessStartInfo(csvPathAndFilename)
+                {
+                    WorkingDirectory = outputDirectory,
+                    UseShellExecute = true
+                };
+                Process.Start(processStartInfo);
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Failed to open [{csvPathAndFilename}]: {ex.Message}");
+            }
+        }
     }
 }

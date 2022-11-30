@@ -43,9 +43,10 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.Black;
             this.panel1.Controls.Add(this.Receipt);
-            this.panel1.Location = new System.Drawing.Point(-21, 1);
+            this.panel1.Location = new System.Drawing.Point(-18, 1);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1661, 85);
+            this.panel1.Size = new System.Drawing.Size(1453, 64);
             this.panel1.TabIndex = 0;
             // 
             // Receipt
@@ -54,9 +55,9 @@
             this.Receipt.BackColor = System.Drawing.Color.Black;
             this.Receipt.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Receipt.ForeColor = System.Drawing.Color.White;
-            this.Receipt.Location = new System.Drawing.Point(760, 19);
+            this.Receipt.Location = new System.Drawing.Point(665, 14);
             this.Receipt.Name = "Receipt";
-            this.Receipt.Size = new System.Drawing.Size(131, 46);
+            this.Receipt.Size = new System.Drawing.Size(104, 37);
             this.Receipt.TabIndex = 0;
             this.Receipt.Text = "Receipt";
             // 
@@ -67,54 +68,58 @@
             this.panel2.Controls.Add(this.rTax);
             this.panel2.Controls.Add(this.rototal);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(499, 85);
+            this.panel2.Location = new System.Drawing.Point(437, 64);
+            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(651, 925);
+            this.panel2.Size = new System.Drawing.Size(570, 694);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // rTotal
             // 
             this.rTotal.AutoSize = true;
-            this.rTotal.Location = new System.Drawing.Point(252, 732);
+            this.rTotal.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.rTotal.Location = new System.Drawing.Point(123, 513);
             this.rTotal.Name = "rTotal";
-            this.rTotal.Size = new System.Drawing.Size(0, 20);
+            this.rTotal.Size = new System.Drawing.Size(0, 28);
             this.rTotal.TabIndex = 3;
             // 
             // rTax
             // 
             this.rTax.AutoSize = true;
-            this.rTax.Location = new System.Drawing.Point(252, 701);
+            this.rTax.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.rTax.Location = new System.Drawing.Point(123, 474);
             this.rTax.Name = "rTax";
-            this.rTax.Size = new System.Drawing.Size(0, 20);
+            this.rTax.Size = new System.Drawing.Size(0, 28);
             this.rTax.TabIndex = 2;
             // 
             // rototal
             // 
             this.rototal.AutoSize = true;
-            this.rototal.Location = new System.Drawing.Point(252, 667);
+            this.rototal.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.rototal.Location = new System.Drawing.Point(123, 436);
             this.rototal.Name = "rototal";
-            this.rototal.Size = new System.Drawing.Size(0, 20);
+            this.rototal.Size = new System.Drawing.Size(0, 28);
             this.rototal.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(57, 19);
+            this.label1.Location = new System.Drawing.Point(50, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 46);
+            this.label1.Size = new System.Drawing.Size(0, 37);
             this.label1.TabIndex = 0;
             // 
             // FormReceipt
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(151)))), ((int)(((byte)(126)))));
-            this.ClientSize = new System.Drawing.Size(1541, 961);
+            this.ClientSize = new System.Drawing.Size(1348, 721);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(3, 9, 3, 9);
+            this.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
             this.Name = "FormReceipt";
             this.Text = "FormReceipt";
             this.Load += new System.EventHandler(this.FormReceipt_Load);
