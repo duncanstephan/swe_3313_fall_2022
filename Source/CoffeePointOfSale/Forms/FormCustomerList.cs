@@ -27,6 +27,7 @@ namespace CoffeePointOfSale.Forms
         private string? orderCustomerKey;
         private string? customerCSV;
         public string? getCustomerCSV { get { return customerCSV; } }
+        public int orderImport = 1;
         public FormCustomerList(ICustomerService customerService)
         {
             _customerService = customerService;
