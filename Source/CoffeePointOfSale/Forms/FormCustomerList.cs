@@ -44,8 +44,8 @@ namespace CoffeePointOfSale.Forms
                 
 
                 c0 = customer.Phone;
-                c1 = customer._firstName;
-                c2 = customer._lastName;
+                c1 = customer.FirstName;
+                c2 = customer.LastName;
 
                 string[] row = new string[] {c0, c1, c2, "Order"};
 

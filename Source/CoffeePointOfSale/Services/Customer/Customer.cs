@@ -12,9 +12,9 @@ public class Customer
     [JsonPropertyName("CID")]
     private int _id = 0;    //Needs to increment by one every time a new customer is added. Initializes at 0, on id getter call checks list count and increments.
     [JsonPropertyName("FirstName")]
-    private string FirstName = null;
+    private string firstName = "f";
     [JsonPropertyName("LastName")]
-    private string LastName = null;
+    private string lastName = "l";
     [JsonPropertyName("Phone")]
     private string _phone = "3"; //backing field for Phone property. only needed because the setter has logic to handle nulls and trimming spaces.
     [JsonPropertyName("RewardPoints")]
@@ -30,23 +30,23 @@ public class Customer
         }
     }
 
-    public virtual string _firstName
+    public virtual string FirstName
     {
-        get => FirstName;
+        get => firstName;
         set
         {
             if (string.IsNullOrWhiteSpace(value)) throw new ArgumentException("First Name cannot be empty or null");
-            FirstName = value;
+            firstName = value;
         }
     }
 
-    public virtual string _lastName
+    public virtual string LastName
     {
-        get => LastName;
+        get => lastName;
         set
         {
             if (string.IsNullOrWhiteSpace(value)) throw new ArgumentException("First Name cannot be empty or null");
-            LastName = value;
+            lastName = value;
         }
     }
 
