@@ -31,10 +31,14 @@ namespace CoffeePointOfSale.Forms.Base
     {
         //public static FormCreateOrder instance;
         public string OrderData;
+        public string ordersum;
         public decimal orderTax;
         decimal subtotal = 0;
         decimal fsubtotal = 0; 
         decimal fptax = 0;
+        public string Tpay;
+        public string Tsubp;
+        public string TFpTax;
 
 
        //1366, 768
@@ -57,9 +61,9 @@ namespace CoffeePointOfSale.Forms.Base
             _drinkMenuService = drinkMenuService;
             instance = this;
 
-            customerKey = FormCustomerList.instance.getCustomerCSV;
+            //customerKey = FormCustomerList.instance.getCustomerCSV; uncomment to merge
 
-            Debug.WriteLine(customerKey);
+            //Debug.WriteLine(customerKey);uncomment to merge
         }
         
 
@@ -193,7 +197,15 @@ namespace CoffeePointOfSale.Forms.Base
         private void button1_Click(object sender, EventArgs e)  //Finalize Order
         {
             //Debug.WriteLine(OrderData);
+            Tpay = orderTax.ToString();
+            Tsubp = fsubtotal.ToString();
+            TFpTax = fptax.ToString();
             OrderData = orderTax.ToString() + "," + fsubtotal.ToString() + "," + fptax.ToString();
+            if (Cl6.Text.Length > 0)
+            {
+                ordersum = Cl6.Text;
+            }
+            
             //Debug.WriteLine(OrderData + "After");
             if (Cl6.Text.Length != 0)
             {
