@@ -8,6 +8,7 @@ namespace CoffeePointOfSale.Forms
     {
         public static FormMain instance;
         public int orderImport = 1;
+        public int annon = 0;
         public FormMain()
         {
             InitializeComponent();
@@ -18,6 +19,7 @@ namespace CoffeePointOfSale.Forms
         private void btnCreateOrder_Click(object sender, EventArgs e)
         {
             Hide();
+            annon++;
             orderImport = 2;
             FormFactory.Get<FormCreateOrder>().Show();
         }

@@ -24,8 +24,8 @@ namespace CoffeePointOfSale.Forms
         {
             InitializeComponent();
             ptr = FormPayment.instance.paytorec;
-            rTpay = FormPayment.instance.Tpay;
-            rTsubp = FormPayment.instance.Tsubp;
+            rTpay = FormPayment.instance.Tsubp;
+            rTsubp = FormPayment.instance.Tpay;
             rTFpTax = FormPayment.instance.TFpTax;
 
         }
@@ -40,9 +40,10 @@ namespace CoffeePointOfSale.Forms
         private void FormReceipt_Load(object sender, EventArgs e)
         {
             label1.Text = ptr;
-            rototal.Text = rTpay;
-            rTax.Text = rTpay;
-            rTotal.Text = rTsubp;
+            rototal.Text ="Order Subtotal: " + rTpay;
+            rTax.Text = "Tax: " + rTsubp;
+            rTotal.Text ="Order Total: " +rTFpTax;
+            //Math.Round(_appSettings.Tax.Rate * fsubtotal, 2, MidpointRounding.AwayFromZero)
 
         }
 
