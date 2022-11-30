@@ -17,6 +17,8 @@ public class SalesHistory
     public string Payment { get; set; }
     public string PaymentDetails { get; set; }
 
+
+
     List<DrinksInOrder> drinksInOrder { get; set; } = new();
 
     //Needs to send info to CSV Formatter

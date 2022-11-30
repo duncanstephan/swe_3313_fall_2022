@@ -8,6 +8,7 @@ using CoffeePointOfSale.Services.DrinkMenu;
 using CoffeePointOfSale.Services.FormFactory;
 using CoffeePointOfSale.Services.Menu;
 using CoffeePointOfSale.Services.Storage;
+using CoffeePointOfSale.Services.CsvExtract;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -37,6 +38,7 @@ internal static class Startup
         services.AddSingleton<IStorageService, StorageService>();
         services.AddSingleton<ICustomerService, CustomerService>();
         services.AddSingleton<IDrinkMenuService, DrinkMenuService>();
+        services.AddSingleton<ICsvExtract, CsvExtract>();
 
         //add your dependencies here
 
