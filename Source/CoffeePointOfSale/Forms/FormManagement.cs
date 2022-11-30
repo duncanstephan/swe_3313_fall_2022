@@ -42,23 +42,23 @@ public partial class FormManagement : FormNoCloseBase
 
         //loop through each customer and each order - output will have N customers * M orders lines
         //for example, 5 customers each with 5 orders will produce 25 lines of output
-        foreach (var customer in _customerService.Customers.List)
-        {
-            foreach (var order in customer.Orders)
-            {
-                var csvExtractLine = new CsvExtract
-                {
-                    CustomerId = customer.CustomerId,
-                    CustomerName = customer.Name,
-                    OrderDate = order.TransactionDate,
-                    OrderId = order.OrderId,
-                    OrderTotalPrice = order.TotalPrice,
-                    OrderDetails = order.ToString()
-                };
+        //foreach (var customer in _customerService.Customers.List)
+        //{
+        //    foreach (var order in customer.Orders)
+        //    {
+        //        var csvExtractLine = new CsvExtract
+        //        {
+        //            CustomerId = customer.CustomerId,
+        //            CustomerName = customer.Name,
+        //            OrderDate = order.TransactionDate,
+        //            OrderId = order.OrderId,
+        //            OrderTotalPrice = order.TotalPrice,
+        //            OrderDetails = order.ToString()
+        //        };
 
-                csvExtractLines.Add(csvExtractLine);
-            }
-        }
+        //        csvExtractLines.Add(csvExtractLine);
+        //    }
+        //}
         //set path and filename
         var outputDirectory = Path.GetTempPath(); //find OS temp directory
         var csvFilename = $"output_{DateTime.Now.Ticks}.csv";
