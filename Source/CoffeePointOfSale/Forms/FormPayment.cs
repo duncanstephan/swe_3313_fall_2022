@@ -9,13 +9,18 @@ using CoffeePointOfSale.Configuration;
 using System.Text.Json.Nodes;
 using CoffeePointOfSale.Services.SalesHistory;
 using CoffeePointOfSale.Configuration;
+using System.ComponentModel;
+using System.Diagnostics;
 
 namespace CoffeePointOfSale.Forms
 {
     public partial class FormPayment : FormNoCloseBase
     {
+        //public static FormPayment instance;
         //The Customer making the order
         Customer customer;
+
+        FormCreateOrder OrderScreen = new FormCreateOrder();
 
         //variables to send to json file for sales data
         string dateTime;
@@ -26,7 +31,8 @@ namespace CoffeePointOfSale.Forms
         string payment;
         string paymentDetails;
 
-        string data; //= data from FormCreateOrder
+        string OrderData;
+
         //string that will be sent to Customers.json
         string[] salesData;
         bool anonymous = true;
@@ -34,24 +40,32 @@ namespace CoffeePointOfSale.Forms
         private readonly ICustomerService _customerService;
         private IAppSettings _appSettings;
 
+        public FormPayment()
+        {
+            InitializeComponent();
+            
+        }
         public FormPayment(IAppSettings appSettings, ICustomerService customerService) : base(appSettings)
         {
             _customerService = customerService;
             _appSettings = appSettings;
             InitializeComponent();
-        }
-
-
-        private void btnPayWithCredit_Click(object sender, EventArgs e)
-        {
-            Hide();
-            FormFactory.Get<FormReceipt>().Show();
-            //validate credit card
-            if (!anonymous) updatePoints();
-
-            updateSalesData();
+            OrderData = FormCreateOrder.instance.OrderData;
+            orderDataSort(OrderData);
 
         }
+
+
+        //private void btnPayWithCredit_Click(object sender, EventArgs e)
+        //{
+        //    Hide();
+        //    FormFactory.Get<FormReceipt>().Show();
+        //    //validate credit card
+        //    if (!anonymous) updatePoints();
+
+        //    updateSalesData();
+
+        //}
         private void btnPayWithRP_Click(object sender, EventArgs e)
         {
             if (anonymous)
@@ -71,19 +85,18 @@ namespace CoffeePointOfSale.Forms
         public void orderDataSort(string data)
         {
             ///sets data to the string sent from FormCreateOrder
-            ///CreateOrder.ToString = data;        
+            //OrderData = data;
             salesData = data.Split(',');
-
-            //Indexes may need to be changed depending on what order the data is present in the string
-            dateTime = salesData[1];
-            tax = Convert.ToDecimal(salesData[2]);
-            subtotal = Convert.ToDecimal(salesData[3]);
-            total = Convert.ToDecimal(salesData[4]);
-            payment = salesData[6];
-            paymentDetails = salesData[7];
+            
+            //Assigning SalesData Variables to the string from FormCreateOrder
+            tax = Convert.ToDecimal(salesData[0]);
+            subtotal = Convert.ToDecimal(salesData[1]);
+            total = Convert.ToDecimal(salesData[2]);
+            
+            //payment = salesData[6];
+            //paymentDetails = salesData[7];
             //...etc, including drinksInOrder
 
-            //string json = JsonConvert.SerializeObject(salesData);
         }
 
         private void updatePoints()
@@ -91,7 +104,7 @@ namespace CoffeePointOfSale.Forms
             if (!anonymous)
             {
                 //code written assuming string sent by CreateOrder is in the same order as example Excel sheet from UML design
-                string[] subStrings = data.Split(',');
+                string[] subStrings = OrderData.Split(',');
                 decimal subTotal = Convert.ToDecimal(subStrings[5]);
 
                 //math for adding rewards points (1pt per $1 rounding down)
@@ -145,6 +158,29 @@ namespace CoffeePointOfSale.Forms
         {
             //listBox1.Text = customer.OrderData;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Hide();
+            FormFactory.Get<FormReceipt>().Show();
+            //validate credit card
+            if (!anonymous) updatePoints();
+
+            updateSalesData();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+      
+
+        //private void OnLoad(object sender, EventArgs e)
+        //{
+        //    FormCreateOrder form = new FormCreateOrder();
+        //    form.GetOrderDataString();
+        //}
     }
 }
 

@@ -46,7 +46,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "Pay With Credit Card";
             this.button1.UseVisualStyleBackColor = false;
-            //this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // listBox1
             // 
@@ -89,7 +89,6 @@
             this.button2.TabIndex = 5;
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
-            //this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // FormPayment
             // 
@@ -102,6 +101,7 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button1);
+            this.Margin = new System.Windows.Forms.Padding(3, 9, 3, 9);
             this.Name = "FormPayment";
             this.Text = "FormPayment";
             this.ResumeLayout(false);
@@ -117,5 +117,7 @@
         private TextBox textBox2;
         private TextBox textBox3;
         private Button button2;
+        private Button button3;
+        private Button button4;
     }
 }
