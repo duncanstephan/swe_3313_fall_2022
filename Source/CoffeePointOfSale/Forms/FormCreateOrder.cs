@@ -21,6 +21,8 @@ using Newtonsoft.Json.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Collections;
 using CheckBox = System.Windows.Forms.CheckBox;
+using Microsoft.VisualBasic.Logging;
+using System.Diagnostics;
 
 namespace CoffeePointOfSale.Forms.Base
 {
@@ -37,15 +39,19 @@ namespace CoffeePointOfSale.Forms.Base
 
         private IAppSettings _appSettings;
         private IDrinkMenuService _drinkMenuService;
-        
+        public static FormCreateOrder instance;
+        public string? customerKey;
         
         public FormCreateOrder(IAppSettings appSettings, IDrinkMenuService drinkMenuService) : base(appSettings)
         {
             InitializeComponent();
             _appSettings = appSettings;
             _drinkMenuService = drinkMenuService;
-            
-            
+            instance = this;
+
+            customerKey = FormCustomerList.instance.getCustomerCSV;
+
+            Debug.WriteLine(customerKey);
         }
         
 
