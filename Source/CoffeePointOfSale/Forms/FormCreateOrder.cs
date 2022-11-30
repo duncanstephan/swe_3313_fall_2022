@@ -23,6 +23,7 @@ using System.Collections;
 using CheckBox = System.Windows.Forms.CheckBox;
 using Microsoft.VisualBasic.Logging;
 using System.Diagnostics;
+using System.Runtime.Serialization;
 
 namespace CoffeePointOfSale.Forms.Base
 {
@@ -42,14 +43,12 @@ namespace CoffeePointOfSale.Forms.Base
         private IAppSettings _appSettings;
         private IDrinkMenuService _drinkMenuService;
         public static FormCreateOrder instance;
-        
+
         public FormCreateOrder()
         {
-            //InitializeComponent();
+
         }
 
-        public string? customerKey;
-        
         public FormCreateOrder(IAppSettings appSettings, IDrinkMenuService drinkMenuService) : base(appSettings)
         {
             InitializeComponent();
@@ -57,11 +56,20 @@ namespace CoffeePointOfSale.Forms.Base
             _drinkMenuService = drinkMenuService;
             instance = this;
 
-            customerKey = FormCustomerList.instance.getCustomerCSV;
+            if (FormMain.instance.orderImport == 2)
+            {
+                customerKey = "Anonymous, anonymous, anonymous, 0";
+                Debug.WriteLine("formCheck 2");
+            } else if (FormCustomerList.instance.orderImport == 1)
+            {
+                customerKey = FormCustomerList.instance.getCustomerCSV;
+                Debug.WriteLine("FormCheck 1");
+            }
 
             Debug.WriteLine(customerKey);
         }
-        
+
+        public string? customerKey;
 
         private void FormCreateOrder_Load(object sender, EventArgs e)
         {
@@ -300,6 +308,7 @@ namespace CoffeePointOfSale.Forms.Base
         private void returntomain(object sender, EventArgs e)
         {
             Hide();
+            FormMain.instance.orderImport = 1;
             FormFactory.Get<FormMain>().Show();
         }
 
