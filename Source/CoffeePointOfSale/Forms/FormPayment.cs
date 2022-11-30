@@ -34,6 +34,12 @@ namespace CoffeePointOfSale.Forms
         string payment;
         string paymentDetails;
 
+        //variables to send to json file for DrinksInOrder
+        string drink;
+        decimal basePrice;
+        decimal price;
+        string customizations;
+
         string OrderData;
         string ordersum;
         string ptr;
@@ -44,6 +50,10 @@ namespace CoffeePointOfSale.Forms
         public string Tpay;
         public string Tsubp;
         public string TFpTax;
+
+        //Boolean Variables to determine which button is clicked
+        bool credit = false;
+        bool rPoints = false;
 
         private readonly ICustomerService _customerService;
         private IAppSettings _appSettings;
@@ -57,6 +67,7 @@ namespace CoffeePointOfSale.Forms
         {
             instance = this;
             _customerService = customerService;
+            customer = new Customer();
             _appSettings = appSettings;
             InitializeComponent();
             customerCSV = FormCreateOrder.instance.customerKey;
@@ -90,6 +101,9 @@ namespace CoffeePointOfSale.Forms
 
         private void btnPayWithRP_Click(object sender, EventArgs e)
         {
+            rPoints = true;
+            payment = "RewardPoints";
+            paymentDetails = "RP";
             if (anonymous)
             {
                 Hide();
@@ -99,7 +113,7 @@ namespace CoffeePointOfSale.Forms
             else
             {
                 updateSalesData();
-                //subtract rewards points from total
+                updatePoints();
 
             }
         }
@@ -115,28 +129,52 @@ namespace CoffeePointOfSale.Forms
             tax = Convert.ToDecimal(salesData[0]);
             subtotal = Convert.ToDecimal(salesData[1]);
             total = Convert.ToDecimal(salesData[2]);
+
+            drink = salesData[3];
+            basePrice = Convert.ToDecimal(salesData[4]);
+            price = Convert.ToDecimal(salesData[5]);
+            customizations = salesData[6];
+
+            validateKey(salesData[7]);
+            //customer.FirstName = salesData[8];
+            //customer.LastName = salesData[9];
+            //customer.RewardPoints = Convert.ToInt32(salesData[10]);
             
-            //payment = salesData[6];
-            //paymentDetails = salesData[7];
-            //...etc, including drinksInOrder
 
         }
 
         private void updatePoints()
         {
-            if (!anonymous)
-            {
-                //code written assuming string sent by CreateOrder is in the same order as example Excel sheet from UML design
-                string[] subStrings = OrderData.Split(',');
-                decimal subTotal = Convert.ToDecimal(subStrings[5]);
+            //code written assuming string sent by CreateOrder is in the same order as example Excel sheet from UML design
+            string[] subStrings = OrderData.Split(',');
+            decimal subTotal = Convert.ToDecimal(subStrings[1]);
+            int currentPoints = customer.getRewardsPoints();
 
+            if (!anonymous && credit)
+            {
                 //math for adding rewards points (1pt per $1 rounding down)
                 Math.Floor(subTotal);
                 int newPoints = Convert.ToInt32(subTotal);
                 pointsEarned = newPoints;
-                int currentPoints = customer.getRewardsPoints();
+                Debug.WriteLine(newPoints);
                 currentPoints += newPoints;
-
+            }
+            if(!anonymous && rPoints)
+            {
+                //math for subtracting rewards points
+                Math.Floor(total);                  //round down
+                int Total = Convert.ToInt32(total); //convert to int
+                int rpCost = Total * 10;            //cost is 10 points for every dollar
+                Debug.WriteLine(rpCost);
+                if(rpCost > currentPoints)          //if the customer does not have enough points, error form shows
+                {
+                    Hide();
+                    //FormFactory.Get<FormError>().Show();
+                }
+                else
+                {
+                    currentPoints -= rpCost;        //cost is suptracted from customer's points if they have enough
+                }
             }
         }
 
@@ -150,7 +188,15 @@ namespace CoffeePointOfSale.Forms
                 Total = total,
                 PointsEarned = pointsEarned,
                 Payment = payment,
-                PaymentDetails = paymentDetails
+                PaymentDetails = paymentDetails,
+            };
+
+            var drinks = new DrinksInOrder
+            {
+                Drink = drink,
+                BasePrice = basePrice,
+                Price = price,
+                Description = customizations
             };
 
             var serializerOptions = new JsonSerializerOptions
@@ -158,15 +204,19 @@ namespace CoffeePointOfSale.Forms
                 WriteIndented = true,
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase
             };
-
-            var cust = _customerService.Customers["anonymous"];
-            cust.SalesHistory.Add(order);
-            _customerService.Write();
-
+            if (anonymous)
+            {
+                var cust = _customerService.Customers["anonymous"];
+                cust.SalesHistory.Add(order);
+                order.drinksInOrder.Add(drinks);
+                _customerService.Write();
+            }
+          
             if (!anonymous)
             {
                 var RewardsCust = _customerService.Customers[customer.Phone];
                 RewardsCust.SalesHistory.Add(order);
+                order.drinksInOrder.Add(drinks);
                 _customerService.Write();
             }
         }
@@ -184,7 +234,9 @@ namespace CoffeePointOfSale.Forms
 
         private void BtnPayWithCredit_Click(object sender, EventArgs e)
         {
-
+            credit = true;
+            payment = "Credit";
+            ///paymentDetails = last four digits of card
             //validate credit card
             CreditCardDetector detector = new CreditCardDetector(textBox1.Text);
             bool Valid = detector.IsValid();
@@ -220,7 +272,21 @@ namespace CoffeePointOfSale.Forms
 
         }
 
+        private void validateKey(string key)
+        {
+            var customerlist = _customerService.Customers.GetListOfCustomers();
+            string temp = "";
 
+            for (int i = 0; i < _customerService.Customers.List.Count; i++)
+            {
+                if (key == customerlist[i].Phone)
+                {
+                    customer = customerlist[i];
+                }
+            }
+
+            
+        }
 
         //private void OnLoad(object sender, EventArgs e)
         //{
