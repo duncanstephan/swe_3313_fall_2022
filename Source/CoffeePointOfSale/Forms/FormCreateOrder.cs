@@ -165,6 +165,7 @@ namespace CoffeePointOfSale.Forms.Base
             {
                 tax.Text = "Tax: " + _appSettings.Tax.Rate.ToString();
             }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
