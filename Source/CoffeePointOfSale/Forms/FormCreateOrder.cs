@@ -61,9 +61,9 @@ namespace CoffeePointOfSale.Forms.Base
             _drinkMenuService = drinkMenuService;
             instance = this;
 
-            //customerKey = FormCustomerList.instance.getCustomerCSV; uncomment to merge
+            customerKey = FormCustomerList.instance.getCustomerCSV; 
 
-            //Debug.WriteLine(customerKey);uncomment to merge
+            Debug.WriteLine(customerKey);
         }
         
 
