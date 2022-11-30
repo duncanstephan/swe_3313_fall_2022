@@ -30,8 +30,8 @@ namespace CoffeePointOfSale.Forms.Base
         
         decimal subtotal = 0;
         decimal fsubtotal = 0; 
-        int whipped = 1;
-       
+        decimal fptax = 0;
+
 
        //1366, 768
 
@@ -66,7 +66,7 @@ namespace CoffeePointOfSale.Forms.Base
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e) 
             
         {
-            Drink.Text = comboBox1.Text;
+            
            
             comboBox2.Items.Clear();
 
@@ -75,7 +75,14 @@ namespace CoffeePointOfSale.Forms.Base
 
             var drinkList = _drinkMenuService.DrinkMenu.Drinks;
             //if (comboBox1.Text == "")
-         
+            
+            for(int i = 0; i<drinkList.Count;i++)
+            {
+                if (drinkList[i].Name == comboBox1.Text)
+                {
+                    Drink.Text = drinkList[i].Name + " $" + drinkList[i].BasePrice.ToString();
+                }
+            }
             for (int i = 0; i < drinkList.Count; i++)
             {
                 if (drinkList[i].Name == comboBox1.Text)
@@ -157,13 +164,13 @@ namespace CoffeePointOfSale.Forms.Base
             fsubtotal = fsubtotal + subtotal;
             subtotal = 0;
             osubtotal.Text = "Order Subtotal: " + fsubtotal.ToString();
-            decimal fptax = (fsubtotal * _appSettings.Tax.Rate) + fsubtotal;
-            finalptax.Text = "Order Total: $" + Math.Round(fptax).ToString();
+            fptax = (fsubtotal * _appSettings.Tax.Rate) + fsubtotal;
+            finalptax.Text = "Order Total: $" + Math.Round(fptax,2,MidpointRounding.AwayFromZero).ToString();
             //calculate final tax
             label6.Text = "Drink Subtotal: ";
             if (Cl6.Text.Length > 0)
             {
-                tax.Text = "Tax: " + _appSettings.Tax.Rate.ToString();
+                tax.Text = "Tax: " + (Math.Round(_appSettings.Tax.Rate*fsubtotal,2,MidpointRounding.AwayFromZero));
             }
         }
 
@@ -239,8 +246,8 @@ namespace CoffeePointOfSale.Forms.Base
                     {
                         if (comboBox2.Text == drinkList[i].Customizations[j].Name)
                         {
-                            int quantity = int.Parse(comboBox3.Text);
-                            Cl1.Text = Cl1.Text + Environment.NewLine + comboBox3.Text + "x" + comboBox2.Text + (drinkList[i].Customizations[j].Price*quantity);
+                            int quantity = Int32.Parse(comboBox3.Text);
+                            Cl1.Text = Cl1.Text + Environment.NewLine + comboBox3.Text + "x " + comboBox2.Text +" " +(drinkList[i].Customizations[j].Price*quantity);
                             subtotal =  subtotal + (drinkList[i].Customizations[j].Price * quantity);
                         }
 
@@ -261,6 +268,8 @@ namespace CoffeePointOfSale.Forms.Base
         {
             Cl1.Text = "";
             Drink.Text = "";
+            subtotal = 0;
+            label6.Text = "Drink Subtotal: " + subtotal;
         }
 
         private void label6_Click_1(object sender, EventArgs e)
@@ -273,6 +282,17 @@ namespace CoffeePointOfSale.Forms.Base
         {
             Hide();
             FormFactory.Get<FormMain>().Show();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Cl6.Text = "";
+            fsubtotal = 0;
+            osubtotal.Text = "Order Subtotal: " + fsubtotal.ToString();
+            tax.Text = "Tax: ";
+            fptax = 0;
+            finalptax.Text = "Order Total: $" + Math.Round(fptax).ToString();
+
         }
     }
 
