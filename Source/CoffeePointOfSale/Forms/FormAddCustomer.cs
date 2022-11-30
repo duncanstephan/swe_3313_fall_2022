@@ -36,52 +36,59 @@ namespace CoffeePointOfSale.Forms
         private void AddCustomer()
         {
             Customer customer = new Customer();//Create new customer object, then assign textbox variables to customer object.
-            try
-            {
-                customer.Phone = validatePhone(txtPhone.Text);
-                customer.FirstName = txtFirstName.Text;
-                customer.LastName = txtLastName.Text;
 
-                if (customer.Phone == null)
-                {
-                    throw new Exception("Phone ");
-                } else if (customer.FirstName == null)
-                {
-                    throw new Exception("First Name ");
-                } else if (customer.LastName == null)
-                {
-                    throw new Exception("Last Name ");
-                }
-            } catch (Exception i)
-            {
-                var o = "";
-                switch (i.Message)
-                {
-                    case "Phone ":
-                        o = customer.Phone;
-                        break;
-                    case "First Name ":
-                        o = customer.FirstName;
-                        break;
-                    case "Last Name ":
-                        o = customer.LastName;
-                        break;
-                }
-                GCHandle gch = GCHandle.Alloc(o, GCHandleType.Pinned);
-                IntPtr ptr = gch.AddrOfPinnedObject();
+            tryValidFields(customer);
 
-                string temp = "Error Code " + ptr + ": " + i.Message + "cannot be empty.";
-                Debug.WriteLine(temp);
-                FormError error = new FormError(temp);
-                error.Show();
-
-                canClose = false;
-            }
             customer.RewardPoints = 0;
             customer.setId();
 
             _customerService.Customers.Add(customer);
             _customerService.Write();
+        }
+
+        private void tryValidFields(Customer customer)
+        {
+            try {
+                customer.Phone = validatePhone(txtPhone.Text);
+                customer.FirstName = txtFirstName.Text;
+                customer.LastName = txtLastName.Text;
+                if (customer.Phone == null)
+                {
+                    throw new Exception("Phone ");
+                }
+                else if (customer.FirstName == null)
+                {
+                    throw new Exception("First Name ");
+                }
+                else if (customer.LastName == null)
+                {
+                    throw new Exception("Last Name ");
+                }
+            } catch (Exception i) { tryDigErrorMessage(i, customer); }
+        }
+
+        private void tryDigErrorMessage(Exception i, Customer customer)
+        {
+            var o = "";
+            switch (i.Message)
+            {
+                case "Phone ":
+                    o = customer.Phone;
+                    break;
+                case "First Name ":
+                    o = customer.FirstName;
+                    break;
+                case "Last Name ":
+                    o = customer.LastName;
+                    break;
+            }
+            GCHandle gch = GCHandle.Alloc(o, GCHandleType.Pinned);
+            IntPtr ptr = gch.AddrOfPinnedObject();
+            string temp = "Error Code " + ptr + ": " + i.Message + "cannot be empty.";
+            Debug.WriteLine(temp);
+            FormError error = new FormError(temp);
+            error.Show();
+            canClose = false;
         }
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
@@ -96,6 +103,55 @@ namespace CoffeePointOfSale.Forms
         }
 
         private string validatePhone(string phoneNumber)
+        {
+            insertDashes(phoneNumber);
+            tryIsUnique(phoneNumber);
+            tryHasCorrectDigits(phoneNumber);
+
+            return phoneNumber;
+        }
+
+        private void tryIsUnique(string phoneNumber)
+        {
+            try
+            {
+                if (isUnique(phoneNumber)) { }
+                else { throw new Exception(); }
+            }
+            catch (Exception e)
+            {
+                var o = phoneNumber;
+                GCHandle gch = GCHandle.Alloc(o, GCHandleType.Pinned);
+                IntPtr ptr = gch.AddrOfPinnedObject();
+                string temp = "Error Code " + ptr + ": Phone Number already exists in Customer Records.";
+                Debug.WriteLine(temp);
+                FormError error = new FormError(temp);
+                error.Show();
+                canClose = false;
+            }
+        }
+
+        private void tryHasCorrectDigits(string phoneNumber)
+        {
+            try
+            {
+                if (hasCorrectDigits(phoneNumber)) { }
+                else { throw new Exception(); }
+            }
+            catch (Exception f)
+            {
+                var o = phoneNumber;
+                GCHandle gch = GCHandle.Alloc(o, GCHandleType.Pinned);
+                IntPtr ptr = gch.AddrOfPinnedObject();
+                string temp = "Error Code " + ptr + ": Phone Number is invalid.";
+                Debug.WriteLine(temp);
+                FormError error = new FormError(temp);
+                error.Show();
+                canClose = false;
+            }
+        }
+
+        private void insertDashes(string phoneNumber)
         {
             if (phoneNumber.Length == 10 && isAllNums(phoneNumber) == true)//If phone number was not formatted with dashes, adds them. Converts to char array, moves things down, replaces original string with new string.
             {
@@ -117,39 +173,6 @@ namespace CoffeePointOfSale.Forms
                 phoneNumber = "";
                 foreach (char c in newNums) { phoneNumber += c; }
             }
-
-            try
-            {
-                if (isUnique(phoneNumber)) {}
-                else { throw new Exception(); }
-            } 
-            catch (Exception e)
-            {
-                var o = phoneNumber;
-                GCHandle gch = GCHandle.Alloc(o, GCHandleType.Pinned);
-                IntPtr ptr = gch.AddrOfPinnedObject();               
-                string temp = "Error Code " + ptr + ": Phone Number already exists in Customer Records.";
-                Debug.WriteLine(temp);
-                FormError error = new FormError(temp);
-                error.Show();
-                canClose = false;
-            }
-            try { 
-                if (hasCorrectDigits(phoneNumber)) {}
-                else { throw new Exception(); }
-            }
-            catch (Exception f)
-            {
-                var o = phoneNumber;
-                GCHandle gch = GCHandle.Alloc(o, GCHandleType.Pinned);
-                IntPtr ptr = gch.AddrOfPinnedObject();
-                string temp = "Error Code " + ptr + ": Phone Number is invalid.";
-                Debug.WriteLine(temp);
-                FormError error = new FormError(temp);
-                error.Show();
-                canClose = false;
-            }
-            return phoneNumber;
         }
 
         private bool isAllNums(string numbers)
