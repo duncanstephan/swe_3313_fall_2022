@@ -47,8 +47,4 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\CsvExtract\" />
-  </ItemGroup>
-
 </Project>

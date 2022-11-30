@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.btnClose = new System.Windows.Forms.Button();
+            this.BtnGenCsv = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnClose
@@ -42,11 +43,22 @@
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.OnClickBtnClose);
             // 
+            // BtnGenCsv
+            // 
+            this.BtnGenCsv.Location = new System.Drawing.Point(532, 216);
+            this.BtnGenCsv.Name = "BtnGenCsv";
+            this.BtnGenCsv.Size = new System.Drawing.Size(107, 55);
+            this.BtnGenCsv.TabIndex = 1;
+            this.BtnGenCsv.Text = "Generate and Open CSV File";
+            this.BtnGenCsv.UseVisualStyleBackColor = true;
+            this.BtnGenCsv.Click += new System.EventHandler(this.BtnGenCsv_Click);
+            // 
             // FormManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1178, 541);
+            this.Controls.Add(this.BtnGenCsv);
             this.Controls.Add(this.btnClose);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormManagement";
@@ -59,5 +71,6 @@
         #endregion
 
         private Button btnClose;
+        private Button BtnGenCsv;
     }
 }
