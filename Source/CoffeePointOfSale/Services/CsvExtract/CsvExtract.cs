@@ -14,14 +14,12 @@ namespace CoffeePointOfSale.Services.CsvExtract
         }
 
         public string? CustomerId { get; set; }
-        public string? CustomerName { get; set; }
-        public string? OrderId { get; set; }
         public string OrderDate { get; set; }
         public decimal OrderTotalPrice { get; set; }
         public string? OrderPaymentType { get; set; }
         public decimal? OrderSubTotal { get; set;}
-
         public decimal? OrderTax { get; set; }
+        public decimal? RewardsRedeemed { get; set; }
 
     }
 }
