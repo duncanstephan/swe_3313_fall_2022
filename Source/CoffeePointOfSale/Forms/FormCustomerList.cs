@@ -23,33 +23,34 @@ namespace CoffeePointOfSale.Forms
     {
 
         private readonly ICustomerService _customerService;
+        public static FormCustomerList instance;
+        private string? orderCustomerKey;
+        private string? customerCSV;
+        public string? getCustomerCSV { get { return customerCSV; } }
         public FormCustomerList(ICustomerService customerService)
         {
             _customerService = customerService;
             InitializeComponent();
+            instance = this;
 
             FormCustomerList_Load();
         }
 
         private void FormCustomerList_Load()
         {
-            
-            PopulateDataGridView();
-        }
-
-        private void PopulateDataGridView()
-        {
             string c0 = "";
             string c1 = "";
             string c2 = "";
+            var customerlist = _customerService.Customers.GetListOfCustomers();
 
             for (int i = 0; i < _customerService.Customers.List.Count; i++)
             {
-                Customer customer = _customerService.Customers.List[i];
+                Customer customer = customerlist[i];
+                
 
                 c0 = customer.Phone;
-                c1 = customer.First;
-                c2 = customer.Last;
+                c1 = customer.FirstName;
+                c2 = customer.LastName;
 
                 string[] row = new string[] {c0, c1, c2, "Order"};
 
@@ -65,7 +66,38 @@ namespace CoffeePointOfSale.Forms
 
         private void button2_Click(object sender, EventArgs e) //Opens formAddCustomer
         {
+            Close();
+            FormFactory.Get<FormAddCustomer>().Show();
+        }
 
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)//Order buttons in customer list
+        {
+            if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                dataGridView1.CurrentRow.Selected = true;
+                orderCustomerKey = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                
+                customerCSV = validateKey(orderCustomerKey);
+
+                Close();
+                FormFactory.Get<FormCreateOrder>().Show();
+            }
+        }
+
+        private string validateKey(string key)
+        {
+            var customerlist = _customerService.Customers.GetListOfCustomers();
+            string temp = "";
+
+            for (int i = 0; i < _customerService.Customers.List.Count; i++)
+            {
+                if (key == customerlist[i].Phone)
+                {
+                    temp = customerlist[i].ToString();
+                }
+            }
+
+            return temp;
         }
     }
 }

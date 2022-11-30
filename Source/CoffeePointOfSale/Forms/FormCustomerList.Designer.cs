@@ -54,13 +54,13 @@
             this.firstName,
             this.lastName,
             this.btnOrder});
-            this.dataGridView1.Location = new System.Drawing.Point(368, 109);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
+            this.dataGridView1.Location = new System.Drawing.Point(526, 182);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 33;
-            this.dataGridView1.Size = new System.Drawing.Size(606, 256);
+            this.dataGridView1.Size = new System.Drawing.Size(866, 427);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // phone
             // 
@@ -97,10 +97,9 @@
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(82)))), ((int)(((byte)(94)))));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(32, 15);
-            this.button1.Margin = new System.Windows.Forms.Padding(2);
+            this.button1.Location = new System.Drawing.Point(46, 25);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(132, 36);
+            this.button1.Size = new System.Drawing.Size(189, 60);
             this.button1.TabIndex = 1;
             this.button1.Text = "Return to Main Menu";
             this.button1.UseVisualStyleBackColor = false;
@@ -110,10 +109,9 @@
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(587, 418);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Location = new System.Drawing.Point(839, 697);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(151, 50);
+            this.button2.Size = new System.Drawing.Size(216, 83);
             this.button2.TabIndex = 2;
             this.button2.Text = "Add New Customer";
             this.button2.UseVisualStyleBackColor = false;
@@ -128,9 +126,10 @@
             this.panel1.BackColor = System.Drawing.Color.Black;
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button1);
-            this.panel1.Location = new System.Drawing.Point(-10, -4);
+            this.panel1.Location = new System.Drawing.Point(-14, -7);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1366, 73);
+            this.panel1.Size = new System.Drawing.Size(1951, 122);
             this.panel1.TabIndex = 3;
             // 
             // label1
@@ -139,22 +138,23 @@
             this.label1.BackColor = System.Drawing.Color.Black;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(582, 13);
+            this.label1.Location = new System.Drawing.Point(831, 22);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(265, 54);
+            this.label1.Size = new System.Drawing.Size(394, 81);
             this.label1.TabIndex = 2;
             this.label1.Text = "Customer List";
             // 
             // FormCustomerList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(184)))), ((int)(((byte)(151)))), ((int)(((byte)(126)))));
-            this.ClientSize = new System.Drawing.Size(1348, 721);
+            this.ClientSize = new System.Drawing.Size(1926, 1202);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
-            this.Margin = new System.Windows.Forms.Padding(9, 13, 9, 13);
+            this.Margin = new System.Windows.Forms.Padding(13, 22, 13, 22);
             this.Name = "FormCustomerList";
             this.Text = "HIDE Coffee";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

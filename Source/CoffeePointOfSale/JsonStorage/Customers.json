@@ -2,25 +2,25 @@
   "Customers": {
     "anonymous": {
       "CID": 0,
-      "firstName": "anonymous",
-      "lastName": "anonymous",
+      "FirstName": "anonymous",
+      "LastName": "anonymous",
       "Phone": "anonymous",
       "RewardPoints": 0,
       "SalesHistory": []
     },
     "404-444-5555": {
       "CID": 1,
-      "firstName": "Test",
-      "lastName": "Testor",
+      "FirstName": "Test",
+      "LastName": "Testor",
       "Phone": "404-444-5555",
       "RewardPoints": 95,
       "SalesHistory": [
         {
-          "Date/Time": "2022-11-10 13:30:00",
+          "DateTime": "2022-11-10 13:30:00",
           "Tax": 0.20,
           "Subtotal": 2.00,
           "Total": 2.20,
-          "PointEarned": 20,
+          "PointsEarned": 20,
           "Payment": "Credit",
           "PaymentDetails": "9112",
           "DrinksInOrder": [
@@ -42,16 +42,16 @@
     },
     "404-678-6795": {
       "CID": 2,
-      "firstName": "Chevy",
-      "lastName": "Chase",
+      "FirstName": "Chevy",
+      "LastName": "Chase",
       "Phone": "404-678-6795",
       "RewardPoints": 95,
       "SalesHistory": []
     },
     "911-483-7241": {
       "CID": 3,
-      "firstName": "Kim",
-      "lastName": "Petras",
+      "FirstName": "Kim",
+      "LastName": "Petras",
       "Phone": "911-483-7241",
       "RewardPoints": 200,
       "SalesHistory": []
