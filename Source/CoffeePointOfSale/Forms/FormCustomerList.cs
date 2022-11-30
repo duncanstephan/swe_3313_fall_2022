@@ -23,10 +23,15 @@ namespace CoffeePointOfSale.Forms
     {
 
         private readonly ICustomerService _customerService;
+        public static FormCustomerList instance;
+        private string? orderCustomerKey;
+        private string? customerCSV;
+        public string? getCustomerCSV { get { return customerCSV; } }
         public FormCustomerList(ICustomerService customerService)
         {
             _customerService = customerService;
             InitializeComponent();
+            instance = this;
 
             FormCustomerList_Load();
         }
@@ -63,6 +68,36 @@ namespace CoffeePointOfSale.Forms
         {
             Close();
             FormFactory.Get<FormAddCustomer>().Show();
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)//Order buttons in customer list
+        {
+            if (dataGridView1.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                dataGridView1.CurrentRow.Selected = true;
+                orderCustomerKey = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+                
+                customerCSV = validateKey(orderCustomerKey);
+
+                Close();
+                FormFactory.Get<FormCreateOrder>().Show();
+            }
+        }
+
+        private string validateKey(string key)
+        {
+            var customerlist = _customerService.Customers.GetListOfCustomers();
+            string temp = "";
+
+            for (int i = 0; i < _customerService.Customers.List.Count; i++)
+            {
+                if (key == customerlist[i].Phone)
+                {
+                    temp = customerlist[i].ToString();
+                }
+            }
+
+            return temp;
         }
     }
 }

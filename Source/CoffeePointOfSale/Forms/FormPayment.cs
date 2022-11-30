@@ -7,7 +7,6 @@ using System.Text.Json;
 using CoffeePointOfSale.Services.Storage;
 using CoffeePointOfSale.Configuration;
 using System.Text.Json.Nodes;
-using CoffeePointOfSale.Services.SalesHistory;
 using CoffeePointOfSale.Configuration;
 using System.ComponentModel;
 using System.Diagnostics;
