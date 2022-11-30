@@ -81,6 +81,7 @@ namespace CoffeePointOfSale.Forms
             customer.setId();
 
             _customerService.Customers.Add(customer);
+            _customerService.Write();
         }
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
