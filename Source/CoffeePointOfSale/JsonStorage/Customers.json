@@ -16,11 +16,11 @@
       "RewardPoints": 95,
       "SalesHistory": [
         {
-          "Date/Time": "2022-11-10 13:30:00",
+          "DateTime": "2022-11-10 13:30:00",
           "Tax": 0.20,
           "Subtotal": 2.00,
           "Total": 2.20,
-          "PointEarned": 20,
+          "PointsEarned": 20,
           "Payment": "Credit",
           "PaymentDetails": "9112",
           "DrinksInOrder": [
