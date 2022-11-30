@@ -71,8 +71,8 @@ namespace CoffeePointOfSale.Forms
 
         private void appendOrderData()
         {
-            string temp = customerCSV;
-            temp += ", " + OrderData;
+            string temp = OrderData;
+            temp += "," + customerCSV;
             OrderData = temp;
         }
 
