@@ -73,6 +73,7 @@
             this.btnAddCustomer.TabIndex = 3;
             this.btnAddCustomer.Text = "Add Customer";
             this.btnAddCustomer.UseVisualStyleBackColor = true;
+            this.btnAddCustomer.Click += new System.EventHandler(this.btnAddCustomer_Click);
             // 
             // txtPhone
             // 
@@ -118,6 +119,7 @@
             this.Controls.Add(this.lastName);
             this.Controls.Add(this.firstName);
             this.Controls.Add(this.phone);
+            this.Margin = new System.Windows.Forms.Padding(13, 22, 13, 22);
             this.Name = "FormAddCustomer";
             this.Text = "FormAddCustomer";
             this.ResumeLayout(false);

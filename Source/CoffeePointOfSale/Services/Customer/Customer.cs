@@ -11,7 +11,7 @@ public partial class Customer
     private readonly ICustomerService _customerService; //using this to grab current number of customers in customerList.
 
     [JsonPropertyName("CID")]
-    private int _id = 0;    //Needs to increment by one every time a new customer is added. Initializes at 0, on id getter call checks list count and increments.
+    private int _id = 3;    //Needs to increment by one every time a new customer is added. Initializes at 3 because we have 4 customers (including anon) in list already, on id getter call checks list count and increments.
     [JsonPropertyName("FirstName")]
     private string firstName = "f";
     [JsonPropertyName("LastName")]
@@ -68,7 +68,6 @@ public partial class Customer
     //Gets called in Customers.cs in the Add method
     public void setId()
     {
-        _id = _customerService.Customers.List.Count;
         _id++;
     }
 
