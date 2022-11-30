@@ -46,8 +46,8 @@
             this.finalptax = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -174,7 +174,7 @@
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(95)))), ((int)(((byte)(98)))));
-            this.button3.Location = new System.Drawing.Point(524, 640);
+            this.button3.Location = new System.Drawing.Point(521, 710);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(94, 26);
             this.button3.TabIndex = 2;
@@ -185,7 +185,7 @@
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(211)))), ((int)(((byte)(83)))));
-            this.button2.Location = new System.Drawing.Point(175, 621);
+            this.button2.Location = new System.Drawing.Point(172, 691);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(168, 38);
             this.button2.TabIndex = 1;
@@ -216,18 +216,19 @@
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(95)))), ((int)(((byte)(98)))));
-            this.button4.Location = new System.Drawing.Point(528, 627);
+            this.button4.Location = new System.Drawing.Point(523, 710);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(94, 26);
             this.button4.TabIndex = 18;
             this.button4.Text = "Clear";
             this.button4.UseVisualStyleBackColor = false;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // osubtotal
             // 
             this.osubtotal.AutoSize = true;
             this.osubtotal.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.osubtotal.Location = new System.Drawing.Point(267, 380);
+            this.osubtotal.Location = new System.Drawing.Point(292, 398);
             this.osubtotal.Name = "osubtotal";
             this.osubtotal.Size = new System.Drawing.Size(103, 19);
             this.osubtotal.TabIndex = 3;
@@ -237,18 +238,17 @@
             // 
             this.tax.AutoSize = true;
             this.tax.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tax.Location = new System.Drawing.Point(311, 396);
+            this.tax.Location = new System.Drawing.Point(336, 414);
             this.tax.Name = "tax";
             this.tax.Size = new System.Drawing.Size(30, 19);
             this.tax.TabIndex = 2;
             this.tax.Text = "Tax:";
-            
             // 
             // finalptax
             // 
             this.finalptax.AutoSize = true;
             this.finalptax.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.finalptax.Location = new System.Drawing.Point(267, 414);
+            this.finalptax.Location = new System.Drawing.Point(292, 432);
             this.finalptax.Name = "finalptax";
             this.finalptax.Size = new System.Drawing.Size(114, 28);
             this.finalptax.TabIndex = 1;
@@ -258,7 +258,7 @@
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(211)))), ((int)(((byte)(83)))));
-            this.button1.Location = new System.Drawing.Point(234, 602);
+            this.button1.Location = new System.Drawing.Point(229, 685);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(168, 38);
             this.button1.TabIndex = 0;
@@ -276,6 +276,18 @@
             this.panel1.Size = new System.Drawing.Size(1446, 82);
             this.panel1.TabIndex = 17;
             // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(82)))), ((int)(((byte)(94)))));
+            this.button5.ForeColor = System.Drawing.Color.White;
+            this.button5.Location = new System.Drawing.Point(41, 21);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(143, 37);
+            this.button5.TabIndex = 12;
+            this.button5.Text = "Return to Main Menu";
+            this.button5.UseVisualStyleBackColor = false;
+            this.button5.Click += new System.EventHandler(this.returntomain);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -288,18 +300,6 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Create Order";
             this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(82)))), ((int)(((byte)(94)))));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(41, 21);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(143, 37);
-            this.button5.TabIndex = 12;
-            this.button5.Text = "Return to Main Menu";
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.returntomain);
             // 
             // FormCreateOrder
             // 
