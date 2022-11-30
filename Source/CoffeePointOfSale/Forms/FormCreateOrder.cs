@@ -27,14 +27,11 @@ namespace CoffeePointOfSale.Forms.Base
     public partial class FormCreateOrder : Base.FormNoCloseBase
 
     {
+        
         decimal subtotal = 0;
         decimal fsubtotal = 0; 
         int whipped = 1;
-        int shotexpresso = 1;
-        int shotvanilla = 1;
-        int iced = 1;
-        int milked = 1;
-        int almond = 1;
+       
 
        //1366, 768
 
@@ -77,6 +74,7 @@ namespace CoffeePointOfSale.Forms.Base
 
 
             var drinkList = _drinkMenuService.DrinkMenu.Drinks;
+            //if (comboBox1.Text == "")
          
             for (int i = 0; i < drinkList.Count; i++)
             {
@@ -153,13 +151,20 @@ namespace CoffeePointOfSale.Forms.Base
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Cl6.Text = Drink.Text + Environment.NewLine + Cl1.Text;
+            Cl6.Text = Cl6.Text + Environment.NewLine + Drink.Text + Cl1.Text;
             Cl1.Text = "";
-            if(Cl6.Text.Length > 0 )
+            Drink.Text = "";
+            fsubtotal = fsubtotal + subtotal;
+            subtotal = 0;
+            osubtotal.Text = "Order Subtotal: " + fsubtotal.ToString();
+            decimal fptax = (fsubtotal * _appSettings.Tax.Rate) + fsubtotal;
+            finalptax.Text = "Order Total: $" + Math.Round(fptax).ToString();
+            //calculate final tax
+            label6.Text = "Drink Subtotal: ";
+            if (Cl6.Text.Length > 0)
             {
-               tax.Text =  "Tax: " +  _appSettings.Tax.Rate.ToString();
+                tax.Text = "Tax: " + _appSettings.Tax.Rate.ToString();
             }
-            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -172,34 +177,9 @@ namespace CoffeePointOfSale.Forms.Base
            
         }
 
-        private void Whippedp_Click(object sender, EventArgs e)
-        {
-            whipped++;
-            if(Cl1.Text.Contains("Whip Cream") == true)
-            {
-                int first = Cl1.Text.IndexOf('W')-2;
-                string first1 = Cl1.Text.Remove(first, 12);
-                Cl1.Text = first1+ whipped + "Whip Cream" + Environment.NewLine;
-                Cl1.Text = Cl1.Text.TrimStart();
-            }
-            // "
-            // " 2Whip Cream
-            //   
-
-            // Cl1.Text.Replace("1Whip Cream", whipped+"Whip Cream");
-            //find the character location of 1x whipped cream and then replace it with 2x whipped cream. 
-            // find a way to get order
-            //Also, find a way to get 
-
-
-
-        }
-
+    
         
-        private void ComputeTotal()
-        {
-            var tax = _appSettings;
-        }
+       
        
 
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
@@ -238,6 +218,17 @@ namespace CoffeePointOfSale.Forms.Base
 
 
             var drinkList = _drinkMenuService.DrinkMenu.Drinks;
+            if (subtotal == 0)
+            {
+                for (int i = 0; i < drinkList.Count; i++)
+                {
+                    if (drinkList[i].Name == comboBox1.Text)
+                    {
+                        subtotal = drinkList[i].BasePrice;
+                    }
+                }
+
+            }
 
             for (int i = 0; i < drinkList.Count; i++)
             {
@@ -250,14 +241,14 @@ namespace CoffeePointOfSale.Forms.Base
                         {
                             int quantity = int.Parse(comboBox3.Text);
                             Cl1.Text = Cl1.Text + Environment.NewLine + comboBox3.Text + "x" + comboBox2.Text + (drinkList[i].Customizations[j].Price*quantity);
-                            subtotal =  (drinkList[i].Customizations[j].Price * quantity);
+                            subtotal =  subtotal + (drinkList[i].Customizations[j].Price * quantity);
                         }
 
                     }
-                    subtotal = subtotal + drinkList[i].BasePrice;
+                    
                 }
             }
-            
+            label6.Text = "Drink Subtotal: " + subtotal.ToString();
            
         }
 
@@ -277,9 +268,11 @@ namespace CoffeePointOfSale.Forms.Base
 
         }
 
-        private void tax_Click(object sender, EventArgs e)
+     
+        private void returntomain(object sender, EventArgs e)
         {
-
+            Hide();
+            FormFactory.Get<FormMain>().Show();
         }
     }
 
