@@ -29,7 +29,9 @@ namespace CoffeePointOfSale.Forms.Base
     public partial class FormCreateOrder : Base.FormNoCloseBase
 
     {
-        
+        //public static FormCreateOrder instance;
+        public string OrderData;
+        public decimal orderTax;
         decimal subtotal = 0;
         decimal fsubtotal = 0; 
         decimal fptax = 0;
@@ -40,6 +42,12 @@ namespace CoffeePointOfSale.Forms.Base
         private IAppSettings _appSettings;
         private IDrinkMenuService _drinkMenuService;
         public static FormCreateOrder instance;
+        
+        public FormCreateOrder()
+        {
+            //InitializeComponent();
+        }
+
         public string? customerKey;
         
         public FormCreateOrder(IAppSettings appSettings, IDrinkMenuService drinkMenuService) : base(appSettings)
@@ -155,14 +163,14 @@ namespace CoffeePointOfSale.Forms.Base
             
         }
 
-       
+        public string GetOrderDataString()
+        {
+            Debug.WriteLine("I reached the getter");
+            Debug.WriteLine(OrderData);
+            return OrderData;
+        }
 
-        
-
-
-       
-
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)  //Add drink to order
         {
             Cl6.Text = Cl6.Text + Environment.NewLine + Drink.Text + Cl1.Text;
             Cl1.Text = "";
@@ -173,21 +181,26 @@ namespace CoffeePointOfSale.Forms.Base
             fptax = (fsubtotal * _appSettings.Tax.Rate) + fsubtotal;
             finalptax.Text = "Order Total: $" + Math.Round(fptax,2,MidpointRounding.AwayFromZero).ToString();
             //calculate final tax
+            orderTax = Math.Round(_appSettings.Tax.Rate * fsubtotal, 2, MidpointRounding.AwayFromZero);
             label6.Text = "Drink Subtotal: ";
             if (Cl6.Text.Length > 0)
             {
                 tax.Text = "Tax: " + (Math.Round(_appSettings.Tax.Rate*fsubtotal,2,MidpointRounding.AwayFromZero));
             }
+            
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)  //Finalize Order
         {
-            if(Cl6.Text.Length != 0)
+            //Debug.WriteLine(OrderData);
+            OrderData = orderTax.ToString() + "," + fsubtotal.ToString() + "," + fptax.ToString();
+            //Debug.WriteLine(OrderData + "After");
+            if (Cl6.Text.Length != 0)
             {
                 Hide();
                 FormFactory.Get<FormPayment>().Show();
             }
-           
+            
         }
 
     
