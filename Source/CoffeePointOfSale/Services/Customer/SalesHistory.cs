@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace CoffeePointOfSale.Services.Customer;
 
-class SalesHistory
+public class SalesHistory
 {
     public string DateTime { get; set; }
     public Decimal Tax { get; set; }    
