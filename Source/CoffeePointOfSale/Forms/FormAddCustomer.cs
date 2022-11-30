@@ -92,6 +92,7 @@ namespace CoffeePointOfSale.Forms
                 IntPtr ptr = gch.AddrOfPinnedObject();
                 
                 string temp = "Error Code " + ptr + ": Phone Number already exists in Customer Records.";
+                Debug.WriteLine(temp);
             }
 
             return phoneNumber;
