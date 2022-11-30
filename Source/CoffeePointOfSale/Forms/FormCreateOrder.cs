@@ -41,7 +41,7 @@ namespace CoffeePointOfSale.Forms.Base
         public string Tsubp;
         public string TFpTax;
 
-
+        public string drinkBasePrice;
        //1366, 768
 
         private IAppSettings _appSettings;
@@ -107,6 +107,7 @@ namespace CoffeePointOfSale.Forms.Base
                 if (drinkList[i].Name == comboBox1.Text)
                 {
                     Drink.Text = drinkList[i].Name + " $" + drinkList[i].BasePrice.ToString();
+                    drinkBasePrice = drinkList[i].BasePrice.ToString();
                 }
             }
             for (int i = 0; i < drinkList.Count; i++)
@@ -177,8 +178,8 @@ namespace CoffeePointOfSale.Forms.Base
 
         public string GetOrderDataString()
         {
-            Debug.WriteLine("I reached the getter");
-            Debug.WriteLine(OrderData);
+            
+            
             return OrderData;
         }
 
@@ -208,7 +209,7 @@ namespace CoffeePointOfSale.Forms.Base
             Tpay = orderTax.ToString();
             Tsubp = fsubtotal.ToString();
             TFpTax = fptax.ToString();
-            OrderData = orderTax.ToString() + "," + fsubtotal.ToString() + "," + fptax.ToString();
+            OrderData = orderTax.ToString() + "," + fsubtotal.ToString() + "," + fptax.ToString() + "," + comboBox1.Text.ToString() + "," + drinkBasePrice + "," + subtotal.ToString() + "," + comboBox2.Text.ToString() + ". Qty: " + comboBox3.Text.ToString() + ",";
             if (Cl6.Text.Length > 0)
             {
                 ordersum = Cl6.Text;
