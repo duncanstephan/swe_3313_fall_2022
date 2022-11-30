@@ -28,6 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+
+            this.BtnPayWithCredit = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+
             this.label1 = new System.Windows.Forms.Label();
             this.osubtotal = new System.Windows.Forms.Label();
             this.taxp = new System.Windows.Forms.Label();
@@ -50,6 +57,7 @@
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
+
             // label1
             // 
             this.label1.AutoSize = true;
@@ -102,6 +110,20 @@
             this.textBox3.Size = new System.Drawing.Size(294, 27);
             this.textBox3.TabIndex = 4;
             this.textBox3.Text = "CVV";
+
+            // BtnPayWithCredit
+            // 
+           // this.BtnPayWithCredit.BackColor = System.Drawing.Color.LimeGreen;
+           // this.BtnPayWithCredit.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+           // this.BtnPayWithCredit.Location = new System.Drawing.Point(356, 110);
+           // this.BtnPayWithCredit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+           // this.BtnPayWithCredit.Name = "BtnPayWithCredit";
+           // this.BtnPayWithCredit.Size = new System.Drawing.Size(164, 41);
+           // this.BtnPayWithCredit.TabIndex = 0;
+           // this.BtnPayWithCredit.Text = "Pay With Credit Card";
+           // this.BtnPayWithCredit.UseVisualStyleBackColor = false;
+          //  this.BtnPayWithCredit.Click += new System.EventHandler(this.BtnPayWithCredit_Click);
+
             // 
             // textBox1
             // 
@@ -213,7 +235,16 @@
             this.Controls.Add(this.ototalp);
             this.Controls.Add(this.taxp);
             this.Controls.Add(this.osubtotal);
-            this.Margin = new System.Windows.Forms.Padding(3, 9, 3, 9);
+
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.BtnPayWithCredit);
+            this.Margin = new System.Windows.Forms.Padding(3, 7, 3, 7);
+
             this.Name = "FormPayment";
             this.Text = "FormPayment";
             this.Load += new System.EventHandler(this.FormPayment_Load);
@@ -231,6 +262,14 @@
         }
 
         #endregion
+
+
+        private Button BtnPayWithCredit;
+        private TextBox textBox1;
+        private TextBox textBox2;
+        private TextBox textBox3;
+        private Button button2;
+
         private Button button3;
         private Button button4;
         private Label label1;

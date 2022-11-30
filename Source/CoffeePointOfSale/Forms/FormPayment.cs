@@ -10,6 +10,8 @@ using System.Text.Json.Nodes;
 using CoffeePointOfSale.Configuration;
 using System.ComponentModel;
 using System.Diagnostics;
+using CreditCardValidator;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace CoffeePointOfSale.Forms
 {
@@ -75,7 +77,7 @@ namespace CoffeePointOfSale.Forms
             OrderData = temp;
         }
 
-        //private void btnPayWithCredit_Click(object sender, EventArgs e)
+        //private void BtnPayWithCredit_Click(object sender, EventArgs e)
         //{
         //    Hide();
         //    FormFactory.Get<FormReceipt>().Show();
@@ -85,6 +87,7 @@ namespace CoffeePointOfSale.Forms
         //    updateSalesData();
 
         //}
+
         private void btnPayWithRP_Click(object sender, EventArgs e)
         {
             if (anonymous)
@@ -183,17 +186,27 @@ namespace CoffeePointOfSale.Forms
             //listBox1.Text = customer.OrderData;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void BtnPayWithCredit_Click(object sender, EventArgs e)
         {
-            //sends payment data to receipt.
-            paytorec = label1.Text;
 
-            Hide();
-            FormFactory.Get<FormReceipt>().Show();
             //validate credit card
-            if (!anonymous) updatePoints();
-
-            updateSalesData();
+            CreditCardDetector detector = new CreditCardDetector(textBox1.Text);
+            bool Valid = detector.IsValid();
+            if (Valid == false)
+            {
+                textBox1.ForeColor = Color.Red;
+                textBox1.Text = "Card number not valid";
+            }
+            //only put data to be transfered after successful validation inside the else statment!!!
+            else
+            {
+                Hide();
+                FormFactory.Get<FormReceipt>().Show();
+                if (!anonymous) updatePoints();
+                //sends payment data to receipt.
+                paytorec = label1.Text;
+                updateSalesData();
+            }
         }
 
         private void button4_Click(object sender, EventArgs e)
